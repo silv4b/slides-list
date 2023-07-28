@@ -1,11 +1,16 @@
 import SlideElement from "../SlideElement/SlideElement";
+import { slides } from "../SlideList/Slides";
 
 export default function SlideList() {
-    
   return (
     <>
-      <p>Slides List</p>
-      <SlideElement />
+      {slides.map((slide) => (
+        <SlideElement
+          title={slide.title}
+          postedAt={slide.postedAt}
+          link={slide.link}
+        />
+      ))}
     </>
   );
 }
