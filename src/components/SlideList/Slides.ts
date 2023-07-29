@@ -1,7 +1,7 @@
 const slides = [
   {
     id: 1,
-    title: "Apresentação da Disciplina",
+    title: "Apresentação",
     postedAt: "19/07/2023",
     link: "https://docs.google.com/presentation/d/1zEOAOtmdudtlx4nJC4rcLvXjSsabMcGt3whVJA5omD4/edit#slide=id.g2121d33469a_0_27",
   },
