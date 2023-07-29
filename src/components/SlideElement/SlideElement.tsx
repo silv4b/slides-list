@@ -1,4 +1,4 @@
-import { SlideContainer, Slide } from "./SlideElement.Style";
+import { SlideContainer, Slide, Title, Subtitle } from "./SlideElement.Style";
 
 interface ISlideElement {
   title: string;
@@ -12,10 +12,10 @@ export default function SlideElement({
   link,
 }: Partial<ISlideElement>) {
   return (
-    <SlideContainer onClick={() => window.open("www.google.com", "_blank")}>
+    <SlideContainer>
       <Slide onClick={() => window.open(link, "_blank")}>
-        <p>{title}</p>
-        <p>{postedAt}</p>
+        <Title>{title}</Title>
+        <Subtitle>{postedAt}</Subtitle>
       </Slide>
     </SlideContainer>
   );
