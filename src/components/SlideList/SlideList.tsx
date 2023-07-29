@@ -7,6 +7,7 @@ export default function SlideList() {
       {slides.map((slide) => (
         <SlideElement key={slide.id}
           title={slide.title}
+          subtitle={slide.subtitle}
           postedAt={slide.postedAt}
           link={slide.link}
         />
