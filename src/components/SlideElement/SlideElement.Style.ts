@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SlideContainer = styled.div`
   background-color: #2d2d2d;
-  width: 330px;
+  width: 360px;
   padding: 0 1rem 0 1rem;
   border-radius: 4px;
   cursor: pointer;
@@ -13,6 +13,10 @@ const SlideContainer = styled.div`
   &:hover {
     transform: scale(1.03);
   }
+
+  @media screen and (max-width: 490px) {
+    width: 290px;
+  }
 `;
 
 const Slide = styled.div`
@@ -22,10 +26,10 @@ const Slide = styled.div`
 `;
 
 const Title = styled.p`
-    color: white;
-`
+  color: white;
+`;
 const Subtitle = styled.p`
-    color: #8b8b8d;
-`
+  color: #8b8b8d;
+`;
 
 export { SlideContainer, Slide, Title, Subtitle };

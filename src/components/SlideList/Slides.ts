@@ -19,7 +19,7 @@ const slides = [
   },
   {
     id: 4,
-    title: "14_PEOO - POO - Exercícios - 1",
+    title: "14_PEOO - POO - Atv. - 1",
     postedAt: "26/07/2023",
     link: "https://docs.google.com/presentation/d/12ZtLR3--1oDxWWeJr8xMJa9VrPeuVaZV46N_JDyA_fU/edit#slide=id.g1e42f8f1aa6_0_0",
   },
