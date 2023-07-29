@@ -38,26 +38,37 @@ const Slide = styled.div`
   }
 `;
 
+const SlideContent = styled.div`
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+
+  @media screen and (max-width: 490px) {
+    &:first-child > :last-child {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+`;
+
 const Title = styled.p`
+  text-align: left;
   color: white;
   margin: 0;
 `;
 
 const Subtitle = styled.p`
   font-size: 0.8rem;
+  text-align: left;
   color: #8b8b8d;
   margin: 0;
+  padding-right: 1rem;
 `;
 
 const PostedAt = styled.p`
   font-size: 0.8rem;
   color: #8b8b8d;
-`;
-
-const SlideContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: start;
 `;
 
 export { SlideContainer, Slide, Title, Subtitle, PostedAt, SlideContent };
