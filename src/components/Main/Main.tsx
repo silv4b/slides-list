@@ -1,9 +1,11 @@
 import SlideList from "../SlideList/SlideList";
+import { Title, Subtitle } from "./Main.Style";
 
 export default function Main() {
   return (
     <>
-      <h2>Lista de Slides</h2>
+      <Title>Lista de Slides</Title>
+      <Subtitle>2º Bimestre</Subtitle>
       <SlideList />
       <div>
         Exemplos no Github,&#32;

@@ -5,3 +5,21 @@
     margin: auto;
     text-align: center;
 }
+
+/* scroll bar width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* scroll bar background */
+::-webkit-scrollbar-track {
+    background: #111114;
+    padding: 5px !important;
+}
+
+/* scroll bar handler */
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px !important;
+    margin-right: 5px !important;
+}
