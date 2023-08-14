@@ -1,5 +1,5 @@
 import SlideList from "../SlideList/SlideList";
-import { Title, Subtitle } from "./Main.Style";
+import { Title, Subtitle, Link } from "./Main.Style";
 
 export default function Main() {
   return (
@@ -8,11 +8,13 @@ export default function Main() {
       <Subtitle>2º Bimestre</Subtitle>
       <SlideList />
       <div>
-        Exemplos no Github,&#32;
-        <a href="https://github.com/silv4b/IFRN-exemplos" target="_blank">
-          clique aqui
-        </a>
-        .
+        <Link href="https://github.com/silv4b/IFRN-exemplos" target="_blank">
+          Exemplos{" "}
+        </Link>
+        no Github. {" "}
+        <Link href="https://classroom.google.com/u/1/c/NTUyOTAyNTUwMjY3" target="_blank">
+          Turma{" "}
+        </Link> no GSA.
       </div>
     </>
   );
