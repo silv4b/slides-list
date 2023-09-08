@@ -5,20 +5,13 @@ export default function Main() {
   return (
     <Container>
       <Title>Lista de Slides</Title>
-      <Subtitle>2º Bimestre</Subtitle>
+      <Subtitle>Slides usados nas disciplinas de PEOO e Algoritmos.</Subtitle>
       <SlideList />
       <div>
         <Link href="https://github.com/silv4b/IFRN-exemplos" target="_blank">
           Exemplos{" "}
         </Link>
         no Github.{" "}
-        {/* <Link
-          href="https://classroom.google.com/u/1/c/NTUyOTAyNTUwMjY3"
-          target="_blank"
-        >
-          Turma{" "}
-        </Link>{" "}
-        no GSA. */}
       </div>
     </Container>
   );
