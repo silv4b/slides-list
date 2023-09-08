@@ -1,9 +1,9 @@
 import SlideList from "../SlideList/SlideList";
-import { Title, Subtitle, Link } from "./Main.Style";
+import { Container, Title, Subtitle, Link } from "./Main.Style";
 
 export default function Main() {
   return (
-    <>
+    <Container>
       <Title>Lista de Slides</Title>
       <Subtitle>2º Bimestre</Subtitle>
       <SlideList />
@@ -12,14 +12,14 @@ export default function Main() {
           Exemplos{" "}
         </Link>
         no Github.{" "}
-        <Link
+        {/* <Link
           href="https://classroom.google.com/u/1/c/NTUyOTAyNTUwMjY3"
           target="_blank"
         >
           Turma{" "}
         </Link>{" "}
-        no GSA.
+        no GSA. */}
       </div>
-    </>
+    </Container>
   );
 }

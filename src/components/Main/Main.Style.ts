@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const Container = styled.div`
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+`;
+
 const Title = styled.h2`
   margin: 0;
 `;
@@ -11,4 +16,4 @@ const Subtitle = styled.h3`
 
 const Link = styled.a``;
 
-export { Title, Subtitle, Link };
+export { Container, Title, Subtitle, Link };
