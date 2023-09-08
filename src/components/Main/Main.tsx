@@ -11,10 +11,14 @@ export default function Main() {
         <Link href="https://github.com/silv4b/IFRN-exemplos" target="_blank">
           Exemplos{" "}
         </Link>
-        no Github. {" "}
-        <Link href="https://classroom.google.com/u/1/c/NTUyOTAyNTUwMjY3" target="_blank">
+        no Github.{" "}
+        <Link
+          href="https://classroom.google.com/u/1/c/NTUyOTAyNTUwMjY3"
+          target="_blank"
+        >
           Turma{" "}
-        </Link> no GSA.
+        </Link>{" "}
+        no GSA.
       </div>
     </>
   );
