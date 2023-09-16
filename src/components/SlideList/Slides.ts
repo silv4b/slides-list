@@ -54,6 +54,12 @@ const slides = [
     link: "https://docs.google.com/presentation/d/1p6CXiFq8mioJw4DWljtTwFrin9b-xmaWpsN5pGwn0co/edit#slide=id.p1",
   },
   {
+    title: "[Extra] - Aula - Python Arquivos",
+    subtitle: "Aquivos em Python",
+    postedAt: "Extra",
+    link: "https://drive.google.com/file/d/1REaICezaTTLvgw_XNBEwo1iUpfx1uAv1/view",
+  },
+  {
     title: "10_PEOO - Funções",
     subtitle: "Trabalhando com funções em Python",
     postedAt: " ",
@@ -101,11 +107,23 @@ const slides = [
     link: "https://docs.google.com/presentation/d/12mzEtQibmcZ_LH_wEwkjUQqfNJKDMUx4s0t7EtkngiI/edit#slide=id.p1",
   },
   {
-    title: "17_PEOO - POO - Interfaces Gráficas",
+    title: "18_PEOO - GUI - 1",
     subtitle: "Usando TKInter do Python",
     postedAt: " ",
     link: "https://docs.google.com/presentation/d/1O1AKeb2FHnSntECmkQNKZC_Q_Sir1wVGIOYmBDTMFzU/edit#slide=id.p1",
   },
+  {
+    title: "18_PEOO - GUI - 2",
+    subtitle: "TKInter - Utilizando Imagens",
+    postedAt: " ",
+    link: "https://docs.google.com/presentation/d/1B7NG47DSKy4vQocWCQK6rEse9vNa5n4kdSkTsEs1hUg/edit#slide=id.g1e70682dea4_1_46"
+  },
+  {
+    title: "[Extra] - Capturando Exceções",
+    subtitle: "Capturando e tratando exceções com Python",
+    postedAt: "Extra",
+    link: "https://drive.google.com/file/d/1KAX3mXmFQA97A1wZeW4YbceWH0esT9uO/view"
+  }
 ];
 
 export { slides };
