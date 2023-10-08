@@ -8,7 +8,7 @@ export default function Main() {
       <Subtitle>Slides usados nas disciplinas de PEOO e Algoritmos.</Subtitle>
       <SlideList />
       <div>
-        <Link href="https://github.com/silv4b/IFRN-exemplos" target="_blank">
+        <Link href="https://github.com/silv4bprof" target="_blank">
           Exemplos{" "}
         </Link>
         no Github.{" "}
