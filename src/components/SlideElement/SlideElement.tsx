@@ -7,6 +7,8 @@ import {
   SlideContent,
 } from "./SlideElement.Style";
 
+import { format, zonedTimeToUtc } from "date-fns-tz";
+
 interface ISlideElement {
   id: string;
   title: string;
@@ -21,6 +23,10 @@ export default function SlideElement({
   created_at,
   url,
 }: Partial<ISlideElement>) {
+  const dataOriginal: string = created_at as string;
+  const dataUTC = zonedTimeToUtc(dataOriginal, "UTC");
+  const dataFormatada: string = format(dataUTC, "dd/MM/yyyy");
+
   return (
     <SlideContainer>
       <Slide onClick={() => window.open(url, "_blank")}>
@@ -28,7 +34,7 @@ export default function SlideElement({
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
         </SlideContent>
-        <CreatedAt>{created_at}</CreatedAt>
+        <CreatedAt>{dataFormatada}</CreatedAt>
       </Slide>
     </SlideContainer>
   );
