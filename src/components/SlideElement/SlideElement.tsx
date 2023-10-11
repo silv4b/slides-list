@@ -3,31 +3,32 @@ import {
   Slide,
   Title,
   Subtitle,
-  PostedAt,
+  CreatedAt,
   SlideContent,
 } from "./SlideElement.Style";
 
 interface ISlideElement {
+  id: string;
   title: string;
   subtitle: string;
-  postedAt: string;
-  link: string;
+  created_at: string;
+  url: string;
 }
 
 export default function SlideElement({
   title,
   subtitle,
-  postedAt,
-  link,
+  created_at,
+  url,
 }: Partial<ISlideElement>) {
   return (
     <SlideContainer>
-      <Slide onClick={() => window.open(link, "_blank")}>
+      <Slide onClick={() => window.open(url, "_blank")}>
         <SlideContent>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
         </SlideContent>
-        <PostedAt>{postedAt}</PostedAt>
+        <CreatedAt>{created_at}</CreatedAt>
       </Slide>
     </SlideContainer>
   );
