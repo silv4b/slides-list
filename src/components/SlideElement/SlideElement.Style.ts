@@ -66,9 +66,9 @@ const Subtitle = styled.p`
   padding-right: 1rem;
 `;
 
-const PostedAt = styled.p`
+const CreatedAt = styled.p`
   font-size: 0.8rem;
   color: #8b8b8d;
 `;
 
-export { SlideContainer, Slide, Title, Subtitle, PostedAt, SlideContent };
+export { SlideContainer, Slide, Title, Subtitle, CreatedAt, SlideContent };

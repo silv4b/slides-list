@@ -3,31 +3,38 @@ import {
   Slide,
   Title,
   Subtitle,
-  PostedAt,
+  CreatedAt,
   SlideContent,
 } from "./SlideElement.Style";
 
+import { format, zonedTimeToUtc } from "date-fns-tz";
+
 interface ISlideElement {
+  id: string;
   title: string;
   subtitle: string;
-  postedAt: string;
-  link: string;
+  created_at: string;
+  url: string;
 }
 
 export default function SlideElement({
   title,
   subtitle,
-  postedAt,
-  link,
+  created_at,
+  url,
 }: Partial<ISlideElement>) {
+  const dataOriginal: string = created_at as string;
+  const dataUTC = zonedTimeToUtc(dataOriginal, "UTC");
+  const dataFormatada: string = format(dataUTC, "dd/MM/yyyy");
+
   return (
     <SlideContainer>
-      <Slide onClick={() => window.open(link, "_blank")}>
+      <Slide onClick={() => window.open(url, "_blank")}>
         <SlideContent>
           <Title>{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
         </SlideContent>
-        <PostedAt>{postedAt}</PostedAt>
+        <CreatedAt>{dataFormatada}</CreatedAt>
       </Slide>
     </SlideContainer>
   );
