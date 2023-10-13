@@ -1,7 +1,6 @@
 import { useState } from "react";
 import supabase from "../../../lib/supabase-client";
 import SlideElement from "../SlideElement/SlideElement";
-// import { slides } from "../SlideList/Slides";
 import { PostType } from "../../../types/collections";
 import { useCallback, useEffect } from "react";
 
