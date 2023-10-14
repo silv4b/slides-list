@@ -18,6 +18,6 @@ const Subtitle = styled.h3`
   font-weight: 400;
 `;
 
-const Link = styled.a``;
+const MyLink = styled.a``;
 
-export { Container, Title, Subtitle, Link };
+export { Container, Title, Subtitle, MyLink };
