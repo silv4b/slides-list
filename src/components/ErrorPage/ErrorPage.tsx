@@ -12,7 +12,6 @@ export default function ManageSlides() {
         O caminho não existe ou não está disponível. Volte{" "}
         <Link to="/">Aqui</Link>.
       </Subtitle>
-      {/* Adicionar um componente de form para envidar dados para SupabaseSPI*/}
     </Container>
   );
 }

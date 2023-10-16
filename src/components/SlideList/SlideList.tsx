@@ -7,7 +7,7 @@ import { useCallback, useEffect } from "react";
 export default function SlideList() {
   const [posts, setPost] = useState<PostType[]>([]);
   const fetcher = useCallback(async () => {
-    const { data, error } = await supabase.from("slides").select("*");
+    const { data, error } = await supabase.from("slides").select("*").order('id', { ascending: true });
     if (error) {
       console.log("Error: ", error);
     } else {
@@ -23,9 +23,7 @@ export default function SlideList() {
     <>
       {posts.map((post) => (
         <SlideElement
-          // identificador unico
           key={post.id}
-          //   props necessárias para o componente
           title={post.title}
           subtitle={post.subtitle}
           created_at={post.created_at}
