@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  align-items: center;
 `;
 
 const Title = styled.h2`
@@ -18,6 +18,6 @@ const Subtitle = styled.h3`
   font-weight: 400;
 `;
 
-const MyLink = styled.a``;
+const Link = styled.a``;
 
-export { Container, Title, Subtitle, MyLink };
+export { Container, Title, Subtitle, Link };
