@@ -24,6 +24,7 @@ export default function SlideList() {
       {posts.map((post) => (
         <SlideElement
           key={post.id}
+          id={post.id}
           title={post.title}
           subtitle={post.subtitle}
           created_at={post.created_at}
