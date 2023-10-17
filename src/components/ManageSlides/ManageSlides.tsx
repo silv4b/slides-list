@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Container, Title, Subtitle } from "./ManageSlides.Style";
+import {
+  Container,
+  Title,
+  Subtitle,
+  InputData,
+  MyButton,
+} from "./ManageSlides.Style";
 import supabase from "../../../lib/supabase-client";
 import { Link } from "react-router-dom";
 
@@ -15,7 +21,7 @@ export default function ManageSlides() {
     subtitle: "",
     url: "",
   });
-  const [showData, setShowData] = useState(false);
+  //   const [showData, setShowData] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,19 +33,23 @@ export default function ManageSlides() {
   };
 
   const handleInsertData = async () => {
-    const { data, error } = await supabase.from("slides").insert([
-      {
-        title: formData.title,
-        subtitle: formData.subtitle,
-        url: formData.url,
-      },
-    ]);
-
-    if (error) {
-      console.error("Erro ao inserir dados no Supabase:", error);
+    if ((formData.title == "") || (formData.subtitle == "") || (formData.url == "")) {
+      console.error("Erro ao inserir dados no Supabase: Campo(s) vazios!");
     } else {
-      console.log("Dados inseridos com sucesso no Supabase:", data);
-      setShowData(true);
+      const { data, error } = await supabase.from("slides").insert([
+        {
+          title: formData.title,
+          subtitle: formData.subtitle,
+          url: formData.url,
+        },
+      ]);
+
+      if (error) {
+        console.error("Erro ao inserir dados no Supabase:", error);
+      } else {
+        console.log("Dados inseridos com sucesso no Supabase:", data);
+        //   setShowData(true);
+      }
     }
   };
 
@@ -67,61 +77,48 @@ export default function ManageSlides() {
         </Title>
         <Subtitle>Adicionar Slides</Subtitle>
 
-        <form>
-          <div>
-            <input
-              type="text"
-              placeholder="Título"
-              id="title"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="Subtítulo"
-              id="subtitle"
-              name="subtitle"
-              value={formData.subtitle}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="URL"
-              id="url"
-              name="url"
-              value={formData.url}
-              onChange={handleChange}
-            />
-          </div>
-        </form>
-        <div>
-          <button onClick={handleInsertData}>Adicionar Slide</button>
-        </div>
+        <InputData
+          type="text"
+          placeholder="Título"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+        />
+        <InputData
+          type="text"
+          placeholder="Subtítulo"
+          name="subtitle"
+          value={formData.subtitle}
+          onChange={handleChange}
+        />
+        <InputData
+          type="text"
+          placeholder="URL"
+          name="url"
+          value={formData.url}
+          onChange={handleChange}
+        />
 
-        {showData && (
+        <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
+
+        {/* {showData && (
           <div>
             <h2>Dados inseridos:</h2>
             <p>Título: {formData.title}</p>
             <p>Subtítulo: {formData.subtitle}</p>
             <p>Link: {formData.url}</p>
           </div>
-        )}
-      </Container>
-      <Container>
+        )} */}
+
         <Title>Remover Slides</Title>
         <Subtitle>Remova slides usando ID</Subtitle>
-        <input
+        <InputData
           type="number"
           placeholder="Identificador"
           value={idToDelete || ""}
           onChange={(e) => setIdToDelete(parseInt(e.target.value) || undefined)}
         />
-        <button onClick={handleRemoveData}>Remover Slide</button>
+        <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
       </Container>
     </>
   );
