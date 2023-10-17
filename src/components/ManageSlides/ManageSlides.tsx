@@ -32,9 +32,18 @@ export default function ManageSlides() {
     }));
   };
 
+  const handleClearForm = () => {
+    setFormData({
+      title: "",
+      subtitle: "",
+      url: "",
+    });
+  };
+
   const handleInsertData = async () => {
-    if ((formData.title == "") || (formData.subtitle == "") || (formData.url == "")) {
+    if (formData.title == "" || formData.subtitle == "" || formData.url == "") {
       console.error("Erro ao inserir dados no Supabase: Campo(s) vazios!");
+      handleClearForm();
     } else {
       const { data, error } = await supabase.from("slides").insert([
         {
@@ -48,8 +57,8 @@ export default function ManageSlides() {
         console.error("Erro ao inserir dados no Supabase:", error);
       } else {
         console.log("Dados inseridos com sucesso no Supabase:", data);
-        //   setShowData(true);
       }
+      handleClearForm();
     }
   };
 
