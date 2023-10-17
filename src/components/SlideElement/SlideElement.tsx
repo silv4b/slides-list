@@ -10,7 +10,7 @@ import {
 import { format, zonedTimeToUtc } from "date-fns-tz";
 
 interface ISlideElement {
-  id: string;
+  id: number;
   title: string;
   subtitle: string;
   created_at: string;
@@ -18,6 +18,7 @@ interface ISlideElement {
 }
 
 export default function SlideElement({
+  id,
   title,
   subtitle,
   created_at,
@@ -32,7 +33,7 @@ export default function SlideElement({
       <Slide onClick={() => window.open(url, "_blank")}>
         <SlideContent>
           <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
+          <Subtitle>{id} - {subtitle}</Subtitle>
         </SlideContent>
         <CreatedAt>{dataFormatada}</CreatedAt>
       </Slide>
