@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+const ContainerRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  transition: 0.2s ease-in-out;
+
+  @media screen and (max-width: 630px) {
+    gap: 0;
+    flex-direction: column;
+  }
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,7 +31,8 @@ const Subtitle = styled.h3`
 `;
 
 const InputData = styled.input`
-  width: 100%;
+  width: 16rem;
+  height: 1rem;
   padding: 1em;
   margin: 0.5em 0 0.5em 0;
   border: none;
@@ -29,12 +42,12 @@ const InputData = styled.input`
 const MyButton = styled.button`
   width: 100%;
   font-size: 1em;
-  margin: 1em 0 1em 0;
   padding: 1rem;
+  margin: 0.5em 0 0.5em 0;
   border: none;
   border-radius: 0.2rem;
 `;
 
 const Link = styled.a``;
 
-export { Container, Title, Subtitle, Link, InputData, MyButton };
+export { Container, Title, Subtitle, Link, InputData, MyButton, ContainerRow };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   Container,
+  ContainerRow,
   Title,
   Subtitle,
   InputData,
@@ -25,7 +26,9 @@ export default function ManageSlides() {
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Decomposição
     const { name, value } = e.target;
+    console.log(e.target);
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -79,7 +82,7 @@ export default function ManageSlides() {
   };
 
   return (
-    <>
+    <ContainerRow>
       <Container>
         <Title>
           Adicionar Slides<Link to="/">.</Link>
@@ -109,8 +112,9 @@ export default function ManageSlides() {
         />
 
         <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
+      </Container>
 
-        {/* {showData && (
+      {/* {showData && (
           <div>
             <h2>Dados inseridos:</h2>
             <p>Título: {formData.title}</p>
@@ -118,7 +122,7 @@ export default function ManageSlides() {
             <p>Link: {formData.url}</p>
           </div>
         )} */}
-
+      <Container>
         <Title>Remover Slides</Title>
         <Subtitle>Remova slides usando ID</Subtitle>
         <InputData
@@ -129,7 +133,7 @@ export default function ManageSlides() {
         />
         <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
       </Container>
-    </>
+    </ContainerRow>
   );
 }
 
