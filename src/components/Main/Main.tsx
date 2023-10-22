@@ -5,7 +5,9 @@ import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 export default function Main() {
   return (
     <Container>
-      <Title>Lista de Slides<Link to="/manage">.</Link></Title>
+      <Title>
+        Lista de Slides<Link to="/manage">.</Link>
+      </Title>
       <Subtitle>Slides usados nas disciplinas de PEOO e Algoritmos.</Subtitle>
       <SlideList />
       <div>

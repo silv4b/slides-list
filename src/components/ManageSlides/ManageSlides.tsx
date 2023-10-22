@@ -24,6 +24,7 @@ export default function ManageSlides() {
   });
   //   const [showData, setShowData] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
+  const [returnedSize, setReturnedSize] = useState<number | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Decomposição
@@ -41,14 +42,14 @@ export default function ManageSlides() {
       subtitle: "",
       url: "",
     });
+    setIdToDelete(undefined);
   };
 
   const handleInsertData = async () => {
     if (formData.title == "" || formData.subtitle == "" || formData.url == "") {
-      console.error("Erro ao inserir dados no Supabase: Campo(s) vazios!");
-      handleClearForm();
+      alert("Erro ao inserir dados no Supabase: Campo(s) vazios!");
     } else {
-      const { data, error } = await supabase.from("slides").insert([
+      const { error } = await supabase.from("slides").insert([
         {
           title: formData.title,
           subtitle: formData.subtitle,
@@ -57,83 +58,107 @@ export default function ManageSlides() {
       ]);
 
       if (error) {
-        console.error("Erro ao inserir dados no Supabase:", error);
+        alert(`Erro ao inserir dados no Supabase: ${error}`);
       } else {
-        console.log("Dados inseridos com sucesso no Supabase:", data);
+        alert(`Dados inseridos com sucesso no Supabase!`);
+      }
+    }
+    handleClearForm();
+  };
+
+  const handleRemoveData = async () => {
+    if (idToDelete == undefined) {
+      alert("Erro ao remover slide do banco de dados: Campo(s) vazios!");
+      handleClearForm();
+      return;
+    }
+
+    // Verifica se o slide com id repassado existe (handleExistsData)
+    if (idToDelete !== undefined) {
+      const { error, count } = await supabase
+        .from("slides")
+        .select("*", { count: "exact", head: true })
+        .eq("id", idToDelete);
+      if (error) {
+        alert(`Erro ao remover dados no Supabase: ${error}`);
+      } else {
+        setReturnedSize(count);
+        if (returnedSize == null || returnedSize == 0) {
+          alert(
+            `Não existe nenhum slide com o identificador ${idToDelete} no banco de dados.`
+          );
+        } else {
+          const { error } = await supabase
+            .from("slides")
+            .delete()
+            .eq("id", idToDelete);
+
+          if (error) {
+            alert(`Erro ao remover slide do banco de dados: ${error}`);
+          } else {
+            alert("Slide removido com sucesso!");
+          }
+        }
       }
       handleClearForm();
     }
   };
 
-  const handleRemoveData = async () => {
-    if (idToDelete !== undefined) {
-      const { error } = await supabase
-        .from("slides")
-        .delete()
-        .eq("id", idToDelete);
-
-      if (error) {
-        console.error("Erro ao remover dados do Supabase:", error);
-      } else {
-        console.log("Dados removidos com sucesso do Supabase");
-        setIdToDelete(undefined);
-      }
-    }
-  };
-
   return (
-    <ContainerRow>
-      <Container>
-        <Title>
-          Adicionar Slides<Link to="/">.</Link>
-        </Title>
-        <Subtitle>Adicionar Slides</Subtitle>
+    <>
+      <ContainerRow>
+        <Container>
+          <Title>
+            Adicionar Slides<Link to="/">.</Link>
+          </Title>
+          <Subtitle>Adicionar Slides</Subtitle>
 
-        <InputData
-          type="text"
-          placeholder="Título"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <InputData
-          type="text"
-          placeholder="Subtítulo"
-          name="subtitle"
-          value={formData.subtitle}
-          onChange={handleChange}
-        />
-        <InputData
-          type="text"
-          placeholder="URL"
-          name="url"
-          value={formData.url}
-          onChange={handleChange}
-        />
+          <InputData
+            type="text"
+            placeholder="Título"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+          />
+          <InputData
+            type="text"
+            placeholder="Subtítulo"
+            name="subtitle"
+            value={formData.subtitle}
+            onChange={handleChange}
+          />
+          <InputData
+            type="text"
+            placeholder="URL"
+            name="url"
+            value={formData.url}
+            onChange={handleChange}
+          />
 
-        <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
-      </Container>
+          <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
+        </Container>
 
-      {/* {showData && (
-          <div>
-            <h2>Dados inseridos:</h2>
-            <p>Título: {formData.title}</p>
-            <p>Subtítulo: {formData.subtitle}</p>
-            <p>Link: {formData.url}</p>
-          </div>
-        )} */}
-      <Container>
-        <Title>Remover Slides</Title>
-        <Subtitle>Remova slides usando ID</Subtitle>
-        <InputData
-          type="number"
-          placeholder="Identificador"
-          value={idToDelete || ""}
-          onChange={(e) => setIdToDelete(parseInt(e.target.value) || undefined)}
-        />
+        <Container>
+          <Title>Remover Slides</Title>
+          <Subtitle>Remova slides usando ID</Subtitle>
+          <InputData
+            type="number"
+            placeholder="Identificador"
+            name="identificador"
+            value={idToDelete || ""}
+            onChange={(e) =>
+              setIdToDelete(parseInt(e.target.value) || undefined)
+            }
+          />
+          <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
+        </Container>
+      </ContainerRow>
+
+      {/* <ContainerRow>
         <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
-      </Container>
-    </ContainerRow>
+        <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
+      </ContainerRow> */}
+    </>
   );
 }
 

@@ -40,12 +40,23 @@ const InputData = styled.input`
 `;
 
 const MyButton = styled.button`
+  display: flex;
+  justify-content: center;
   width: 100%;
-  font-size: 1em;
-  padding: 1rem;
+  height: 1rem;
+  padding: 1.3rem;
+  align-items: center;
   margin: 0.5em 0 0.5em 0;
   border: none;
   border-radius: 0.2rem;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.04);
+    background-color: #fff;
+    color: black;
+  }
 `;
 
 const Link = styled.a``;

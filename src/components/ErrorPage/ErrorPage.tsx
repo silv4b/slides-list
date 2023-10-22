@@ -1,4 +1,3 @@
-// import { useEffect } from "react";
 import { Container, Title, Subtitle } from "./ErrorPage.Style";
 import { Link } from "react-router-dom";
 

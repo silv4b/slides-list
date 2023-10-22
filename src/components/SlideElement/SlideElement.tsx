@@ -33,7 +33,9 @@ export default function SlideElement({
       <Slide onClick={() => window.open(url, "_blank")}>
         <SlideContent>
           <Title>{title}</Title>
-          <Subtitle>{id} - {subtitle}</Subtitle>
+          <Subtitle>
+            {id} - {subtitle}
+          </Subtitle>
         </SlideContent>
         <CreatedAt>{dataFormatada}</CreatedAt>
       </Slide>
