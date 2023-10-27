@@ -7,37 +7,32 @@ import {
   InputData,
   MyButton,
 } from "./ManageSlides.Style";
-import supabase from "../../../lib/supabase-client";
 import { Link } from "react-router-dom";
-
-interface FormData {
-  title: string;
-  subtitle: string;
-  url: string;
-}
+import { SlideType } from "../../../types/slide";
+import { insertSlide } from "../../controllers/slide/InsertController";
+import { deleteSlide } from "../../controllers/slide/DeleteController";
 
 export default function ManageSlides() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formSlide, setFormSlide] = useState<SlideType>({
     title: "",
     subtitle: "",
     url: "",
   });
-  //   const [showData, setShowData] = useState(false);
+
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
-  const [returnedSize, setReturnedSize] = useState<number | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Decomposição
     const { name, value } = e.target;
     console.log(e.target);
-    setFormData((prevData) => ({
+    setFormSlide((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
   const handleClearForm = () => {
-    setFormData({
+    setFormSlide({
       title: "",
       subtitle: "",
       url: "",
@@ -46,22 +41,25 @@ export default function ManageSlides() {
   };
 
   const handleInsertData = async () => {
-    if (formData.title == "" || formData.subtitle == "" || formData.url == "") {
+    if (
+      formSlide.title == "" ||
+      formSlide.subtitle == "" ||
+      formSlide.url == ""
+    ) {
       alert("Erro ao inserir dados no Supabase: Campo(s) vazios!");
     } else {
-      const { error } = await supabase.from("slides").insert([
-        {
-          title: formData.title,
-          subtitle: formData.subtitle,
-          url: formData.url,
-        },
-      ]);
-
-      if (error) {
-        alert(`Erro ao inserir dados no Supabase: ${error}`);
-      } else {
-        alert(`Dados inseridos com sucesso no Supabase!`);
-      }
+      insertSlide("slides", {
+        title: formSlide.title,
+        subtitle: formSlide.subtitle,
+        url: formSlide.url,
+      })
+        .then((result) => {
+          console.log(result);
+          alert(`Dados inseridos corretamente no Supabase: ${result}`);
+        })
+        .catch((error) => {
+          alert(`Erro ao inserir dados no Supabase: ${error.message}`);
+        });
     }
     handleClearForm();
   };
@@ -70,37 +68,15 @@ export default function ManageSlides() {
     if (idToDelete == undefined) {
       alert("Erro ao remover slide do banco de dados: Campo(s) vazios!");
       handleClearForm();
-      return;
-    }
-
-    // Verifica se o slide com id repassado existe (handleExistsData)
-    if (idToDelete !== undefined) {
-      const { error, count } = await supabase
-        .from("slides")
-        .select("*", { count: "exact", head: true })
-        .eq("id", idToDelete);
-      if (error) {
-        alert(`Erro ao remover dados no Supabase: ${error}`);
-      } else {
-        setReturnedSize(count);
-        if (returnedSize == null || returnedSize == 0) {
-          alert(
-            `Não existe nenhum slide com o identificador ${idToDelete} no banco de dados.`
-          );
+    } else {
+      deleteSlide("slides", idToDelete).then((result) => {
+        if (result == true) {
+          alert(`Slide Nº ${idToDelete} foi removido com sucesso!`);
         } else {
-          const { error } = await supabase
-            .from("slides")
-            .delete()
-            .eq("id", idToDelete);
-
-          if (error) {
-            alert(`Erro ao remover slide do banco de dados: ${error}`);
-          } else {
-            alert("Slide removido com sucesso!");
-          }
+          alert(`Slide Nº ${idToDelete} não existe!`);
         }
-      }
-      handleClearForm();
+        handleClearForm();
+      });
     }
   };
 
@@ -117,21 +93,21 @@ export default function ManageSlides() {
             type="text"
             placeholder="Título"
             name="title"
-            value={formData.title}
+            value={formSlide.title}
             onChange={handleChange}
           />
           <InputData
             type="text"
             placeholder="Subtítulo"
             name="subtitle"
-            value={formData.subtitle}
+            value={formSlide.subtitle}
             onChange={handleChange}
           />
           <InputData
             type="text"
             placeholder="URL"
             name="url"
-            value={formData.url}
+            value={formSlide.url}
             onChange={handleChange}
           />
 
@@ -153,11 +129,6 @@ export default function ManageSlides() {
           <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
         </Container>
       </ContainerRow>
-
-      {/* <ContainerRow>
-        <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
-        <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
-      </ContainerRow> */}
     </>
   );
 }
