@@ -6,11 +6,14 @@ import {
   Subtitle,
   InputData,
   MyButton,
+  MyButtonOutlined,
 } from "./ManageSlides.Style";
 import { Link } from "react-router-dom";
 import { SlideType } from "../../../types/slide";
-import { insertSlide } from "../../controllers/slide/InsertController";
+import { selectSlide } from "../../controllers/slide/SelectController";
 import { deleteSlide } from "../../controllers/slide/DeleteController";
+import { insertSlide } from "../../controllers/slide/InsertController";
+import { updateSlide } from "../../controllers/slide/UpdateController";
 
 export default function ManageSlides() {
   const [formSlide, setFormSlide] = useState<SlideType>({
@@ -20,6 +23,9 @@ export default function ManageSlides() {
   });
 
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
+  const [textMainButton, setTextMainButton] = useState("Adicionar Slide");
+  const [textActionOnRight, setTextActionOnRight] = useState("Remover Slides");
+  const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar Slides");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Decomposição
@@ -41,6 +47,24 @@ export default function ManageSlides() {
   };
 
   const handleInsertData = async () => {
+    if (idToDelete != undefined) {
+      console.log("Tá com valor!");
+      updateSlide("slides", idToDelete, {
+        title: formSlide.title,
+        subtitle: formSlide.subtitle,
+        url: formSlide.url,
+      }).then((result) => {
+        if (result == true) {
+          alert(`Slide Nº ${idToDelete} foi atualizado com sucesso!`);
+        } else {
+          alert(`Ocorreu algum erro!`);
+        }
+        setTextActionOnLeft("Adicionando Slide");
+        setTextActionOnRight("Removendo Slide");
+        handleClearForm();
+      });
+      return;
+    }
     if (
       formSlide.title == "" ||
       formSlide.subtitle == "" ||
@@ -62,6 +86,30 @@ export default function ManageSlides() {
         });
     }
     handleClearForm();
+    setTextMainButton("Adicionar Slide");
+  };
+
+  const handleEditData = async () => {
+    if (idToDelete == undefined) {
+      alert("Erro ao recuperar slide do banco de dados!");
+      handleClearForm();
+    } else {
+      setTextActionOnLeft("Editando Slide");
+      setTextActionOnRight("Editando Slide");
+      selectSlide("slides", idToDelete).then((result) => {
+        if (result == undefined) {
+          alert(`Slide Nº ${idToDelete} foi removido com sucesso!`);
+        } else {
+          console.log(result);
+          setFormSlide({
+            title: result.title,
+            subtitle: result.subtitle,
+            url: result.url,
+          });
+        }
+      });
+    }
+    setTextMainButton("Salvar Slide");
   };
 
   const handleRemoveData = async () => {
@@ -85,7 +133,8 @@ export default function ManageSlides() {
       <ContainerRow>
         <Container>
           <Title>
-            Adicionar Slides<Link to="/">.</Link>
+            {textActionOnLeft}
+            <Link to="/">.</Link>
           </Title>
           <Subtitle>Adicionar Slides</Subtitle>
 
@@ -111,11 +160,13 @@ export default function ManageSlides() {
             onChange={handleChange}
           />
 
-          <MyButton onClick={handleInsertData}>Adicionar Slide</MyButton>
+          <MyButtonOutlined onClick={handleInsertData}>
+            {textMainButton}
+          </MyButtonOutlined>
         </Container>
 
         <Container>
-          <Title>Remover Slides</Title>
+          <Title>{textActionOnRight}</Title>
           <Subtitle>Remova slides usando ID</Subtitle>
           <InputData
             type="number"
@@ -126,7 +177,12 @@ export default function ManageSlides() {
               setIdToDelete(parseInt(e.target.value) || undefined)
             }
           />
-          <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
+          <ContainerRow>
+            <MyButtonOutlined onClick={handleEditData}>
+              Editar Slide
+            </MyButtonOutlined>
+            <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
+          </ContainerRow>
         </Container>
       </ContainerRow>
     </>

@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 const ContainerRow = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: row;
-  gap: 2rem;
+  gap: 1rem;
   transition: 0.2s ease-in-out;
 
   @media screen and (max-width: 630px) {
     gap: 0;
+    width: 100%;
     flex-direction: column;
   }
 `;
@@ -54,6 +56,27 @@ const MyButton = styled.button`
 
   &:hover {
     transform: scale(1.04);
+    background-color: #999999;
+    color: black;
+  }
+`;
+
+const MyButtonOutlined = styled.button`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 1rem;
+  padding: 1.3rem;
+  align-items: center;
+  margin: 0.5em 0 0.5em 0;
+  border: none;
+  border-radius: 0.2rem;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  background-color: #303030;
+
+  &:hover {
+    transform: scale(1.04);
     background-color: #fff;
     color: black;
   }
@@ -61,4 +84,13 @@ const MyButton = styled.button`
 
 const Link = styled.a``;
 
-export { Container, Title, Subtitle, Link, InputData, MyButton, ContainerRow };
+export {
+  Container,
+  Title,
+  Subtitle,
+  Link,
+  InputData,
+  MyButton,
+  MyButtonOutlined,
+  ContainerRow,
+};
