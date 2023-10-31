@@ -1,21 +1,20 @@
 import { useState } from "react";
-import supabase from "../../../lib/supabase-client";
 import SlideElement from "../SlideElement/SlideElement";
 import { PostType } from "../../../types/collections";
 import { useCallback, useEffect } from "react";
+import { selectSlides } from "../../controllers/slide/SelectSlidesController";
 
 export default function SlideList() {
   const [posts, setPost] = useState<PostType[]>([]);
   const fetcher = useCallback(async () => {
-    const { data, error } = await supabase
-      .from("slides")
-      .select("*")
-      .order("id", { ascending: true });
-    if (error) {
-      console.log("Error: ", error);
-    } else {
-      setPost(data);
-    }
+    selectSlides("slides", "id").then((result) => {
+      if (result != undefined) {
+        alert(`Erro ao recuperar slides! 😢`);
+        console.error(result);
+      } else {
+        setPost(result);
+      }
+    });
   }, []);
 
   useEffect(() => {
