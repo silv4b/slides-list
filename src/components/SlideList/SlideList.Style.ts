@@ -1,0 +1,46 @@
+import styled from "styled-components";
+
+const InputData = styled.input`
+  width: 100%;
+  height: 1rem;
+  padding: 1em;
+  margin: 0.5em 0 0.5em 0;
+  border: none;
+  border-radius: 0.2rem;
+  background-color: #202024;
+`;
+
+const Container = styled.div`
+  width: 360px;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media screen and (max-width: 490px) {
+    width: 290px;
+  }
+`;
+
+const MyButton = styled.button`
+  display: flex;
+  justify-content: center;
+  width: 3rem;
+  height: 1rem;
+  padding: 1.3rem;
+  align-items: center;
+  margin: 0.5em 0 0.5em 0;
+  border: none;
+  border-radius: 0.2rem;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  background-color: #202024;
+
+  &:hover {
+    transform: scale(1.04);
+    background-color: #fff;
+    color: black;
+  }
+`;
+
+export { InputData, Container, MyButton};

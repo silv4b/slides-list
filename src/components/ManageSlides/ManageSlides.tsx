@@ -100,7 +100,6 @@ export default function ManageSlides() {
         if (result == undefined) {
           alert(`Slide Nº ${idToDelete} foi removido com sucesso!`);
         } else {
-          console.log(result);
           setFormSlide({
             title: result.title,
             subtitle: result.subtitle,
