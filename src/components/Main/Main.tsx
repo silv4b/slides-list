@@ -5,8 +5,10 @@ import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 export default function Main() {
   return (
     <Container>
+      {/* Aplicar depois da implementação do Auth */}
+      {/* <FloatingButton/> */}
       <Title>
-        Lista de Slides<Link to="/manage">.</Link>
+        Lista de Slides<Link to="/manage-material">.</Link>
       </Title>
       <Subtitle>Slides usados nas disciplinas de PEOO e Algoritmos.</Subtitle>
       <SlideList />

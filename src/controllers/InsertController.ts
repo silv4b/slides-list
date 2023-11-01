@@ -1,5 +1,5 @@
-import supabase from "../../../lib/supabase-client";
-import { SlideType } from "../../../types/slide";
+import supabase from "../../lib/supabase-client";
+import { SlideType } from "../../types/slide";
 
 // recebe a tabela e o objeto montado no formulário que serão usados para fazer o insert no supabase
 export const insertMaterial = async (

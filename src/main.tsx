@@ -5,20 +5,27 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Pages
-import ManageSlides from "./components/ManageSlides/ManageMaterial.tsx";
+import ManageSlides from "./components/ManageMaterial/ManageMaterial.tsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
+import ClassesPage from "./components/ClassPage/ClassPage.tsx";
 
 const router = createBrowserRouter([
-  // Inicial Page - App
+  // Inicial Page
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
   },
-  // Add/Del Slides to Supabase API - AddSlide
+  // Manage materials
   {
-    path: "/manage",
+    path: "/manage-material",
     element: <ManageSlides />,
+    errorElement: <ErrorPage />,
+  },
+  // Manage Classes
+  {
+    path: "/classes",
+    element: <ClassesPage />,
     errorElement: <ErrorPage />,
   },
 ]);

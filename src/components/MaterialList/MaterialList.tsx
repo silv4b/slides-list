@@ -5,7 +5,7 @@ import { useCallback, useEffect } from "react";
 import {
   selectMaterials,
   selectMaterialByText,
-} from "../../controllers/material/SelectController";
+} from "../../controllers/SelectController";
 import { InputData, Container, MyButton } from "./MaterialList.Style";
 
 export default function SlideList() {

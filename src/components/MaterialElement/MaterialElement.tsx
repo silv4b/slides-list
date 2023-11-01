@@ -1,10 +1,10 @@
 import {
-  SlideContainer,
-  Slide,
+  MaterialContainer,
+  Material,
   Title,
   Subtitle,
   CreatedAt,
-  SlideContent,
+  MaterialContent,
 } from "./MaterialElement.Style";
 
 import { format, zonedTimeToUtc } from "date-fns-tz";
@@ -17,7 +17,7 @@ interface ISlideElement {
   url: string;
 }
 
-export default function SlideElement({
+export default function MaterialElement({
   id,
   title,
   subtitle,
@@ -29,16 +29,16 @@ export default function SlideElement({
   const dataFormatada: string = format(dataUTC, "dd/MM/yyyy");
 
   return (
-    <SlideContainer>
-      <Slide onClick={() => window.open(url, "_blank")}>
-        <SlideContent>
+    <MaterialContainer>
+      <Material onClick={() => window.open(url, "_blank")}>
+        <MaterialContent>
           <Title>{title}</Title>
           <Subtitle>
             {id} - {subtitle}
           </Subtitle>
-        </SlideContent>
+        </MaterialContent>
         <CreatedAt>{dataFormatada}</CreatedAt>
-      </Slide>
-    </SlideContainer>
+      </Material>
+    </MaterialContainer>
   );
 }

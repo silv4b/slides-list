@@ -10,10 +10,10 @@ import {
 } from "./ManageMaterial.Style";
 import { Link } from "react-router-dom";
 import { SlideType } from "../../../types/slide";
-import { selectMaterial } from "../../controllers/material/SelectController";
-import { deleteMaterial } from "../../controllers/material/DeleteController";
-import { insertMaterial } from "../../controllers/material/InsertController";
-import { updateSlide } from "../../controllers/material/UpdateController";
+import { selectMaterial } from "../../controllers/SelectController";
+import { deleteMaterial } from "../../controllers/DeleteController";
+import { insertMaterial } from "../../controllers/InsertController";
+import { updateSlide } from "../../controllers/UpdateController";
 
 export default function ManageSlides() {
   const [formSlide, setFormSlide] = useState<SlideType>({
@@ -127,6 +127,12 @@ export default function ManageSlides() {
     }
   };
 
+  const handleCancelOperation = () => {
+    setTextActionOnLeft("Adicionar Slides");
+    setTextActionOnRight("Remover Slides");
+    handleClearForm();
+  };
+
   return (
     <>
       <ContainerRow>
@@ -135,7 +141,7 @@ export default function ManageSlides() {
             {textActionOnLeft}
             <Link to="/">.</Link>
           </Title>
-          <Subtitle>Adicionar Slides</Subtitle>
+          <Subtitle>Dados do Material</Subtitle>
 
           <InputData
             type="text"
@@ -158,15 +164,17 @@ export default function ManageSlides() {
             value={formSlide.url}
             onChange={handleChange}
           />
-
-          <MyButtonOutlined onClick={handleInsertData}>
-            {textMainButton}
-          </MyButtonOutlined>
+          <ContainerRow>
+            <MyButtonOutlined onClick={handleInsertData}>
+              {textMainButton}
+            </MyButtonOutlined>
+            <MyButton onClick={handleCancelOperation}>Cancelar</MyButton>
+          </ContainerRow>
         </Container>
 
         <Container>
           <Title>{textActionOnRight}</Title>
-          <Subtitle>Remova slides usando ID</Subtitle>
+          <Subtitle>Identificador do Material</Subtitle>
           <InputData
             type="number"
             placeholder="Identificador"

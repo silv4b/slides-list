@@ -1,4 +1,4 @@
-import supabase from "../../../lib/supabase-client";
+import supabase from "../../lib/supabase-client";
 
 // seleciona um material pelo id
 const selectMaterial = async (tableName: string, idToGetData: number) => {
