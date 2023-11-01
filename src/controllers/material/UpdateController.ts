@@ -6,7 +6,7 @@ export const updateSlide = async (
   idToUpdate: number,
   dataToUpdate: Partial<SlideType>
 ) => {
-  // verifica se o slide existe
+  // verifica se o material existe
   const { error, count } = await supabase
     .from(tableName)
     .select("*", { count: "exact", head: true })

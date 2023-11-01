@@ -1,20 +1,20 @@
 import { useState } from "react";
-import SlideElement from "../SlideElement/SlideElement";
+import SlideElement from "../MaterialElement/MaterialElement";
 import { PostType } from "../../../types/collections";
 import { useCallback, useEffect } from "react";
 import {
-  selectSlides,
-  selectSlidesByText,
-} from "../../controllers/slide/SelectSlidesController";
-import { InputData, Container, MyButton } from "./SlideList.Style";
+  selectMaterials,
+  selectMaterialByText,
+} from "../../controllers/material/SelectController";
+import { InputData, Container, MyButton } from "./MaterialList.Style";
 
 export default function SlideList() {
   const [textSearch, setTextSearch] = useState("");
   const [posts, setPost] = useState<PostType[]>([]);
   const fetcher = useCallback(async () => {
-    selectSlides("slides", "id").then((result) => {
+    selectMaterials("material", "id").then((result) => {
       if (result == "error") {
-        alert(`Erro ao recuperar slides! 😢`);
+        alert(`Erro ao recuperar material!`);
         console.error(result);
       } else {
         setPost(result);
@@ -40,12 +40,12 @@ export default function SlideList() {
     if (textSearch == "") {
       fetcher();
     } else {
-      selectSlidesByText("slides", "title", textSearch, "id").then((result) => {
+      selectMaterialByText("material", "title", textSearch).then((result) => {
         if (result == "error") {
-          alert(`Erro ao recuperar slides! 😢`);
+          alert(`Erro ao recuperar material!`);
           console.error(result);
         } else if (result.length == 0) {
-          alert("Nenhum dado coincide com a pesquisa!");
+          alert("Nenhum material coincide com a pesquisa!");
         } else {
           setPost(result);
         }

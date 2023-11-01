@@ -7,13 +7,13 @@ import {
   InputData,
   MyButton,
   MyButtonOutlined,
-} from "./ManageSlides.Style";
+} from "./ManageMaterial.Style";
 import { Link } from "react-router-dom";
 import { SlideType } from "../../../types/slide";
-import { selectSlide } from "../../controllers/slide/SelectController";
-import { deleteSlide } from "../../controllers/slide/DeleteController";
-import { insertSlide } from "../../controllers/slide/InsertController";
-import { updateSlide } from "../../controllers/slide/UpdateController";
+import { selectMaterial } from "../../controllers/material/SelectController";
+import { deleteMaterial } from "../../controllers/material/DeleteController";
+import { insertMaterial } from "../../controllers/material/InsertController";
+import { updateSlide } from "../../controllers/material/UpdateController";
 
 export default function ManageSlides() {
   const [formSlide, setFormSlide] = useState<SlideType>({
@@ -49,13 +49,13 @@ export default function ManageSlides() {
   const handleInsertData = async () => {
     if (idToDelete != undefined) {
       console.log("Tá com valor!");
-      updateSlide("slides", idToDelete, {
+      updateSlide("material", idToDelete, {
         title: formSlide.title,
         subtitle: formSlide.subtitle,
         url: formSlide.url,
       }).then((result) => {
         if (result == true) {
-          alert(`Slide Nº ${idToDelete} foi atualizado com sucesso!`);
+          alert(`Material Nº ${idToDelete} foi atualizado com sucesso!`);
         } else {
           alert(`Ocorreu algum erro!`);
         }
@@ -70,19 +70,19 @@ export default function ManageSlides() {
       formSlide.subtitle == "" ||
       formSlide.url == ""
     ) {
-      alert("Erro ao inserir dados no Supabase: Campo(s) vazios!");
+      alert("Erro ao inserir material no banco de dados.");
     } else {
-      insertSlide("slides", {
+      insertMaterial("material", {
         title: formSlide.title,
         subtitle: formSlide.subtitle,
         url: formSlide.url,
       })
         .then((result) => {
           console.log(result);
-          alert(`Dados inseridos corretamente no Supabase: ${result}`);
+          alert(`Dados inseridos corretamente no banco de dados: ${result}`);
         })
         .catch((error) => {
-          alert(`Erro ao inserir dados no Supabase: ${error.message}`);
+          alert(`Erro ao inserir dados no banco de dados: ${error.message}`);
         });
     }
     handleClearForm();
@@ -91,14 +91,14 @@ export default function ManageSlides() {
 
   const handleEditData = async () => {
     if (idToDelete == undefined) {
-      alert("Erro ao recuperar slide do banco de dados!");
+      alert("Erro ao recuperar material do banco de dados!");
       handleClearForm();
     } else {
-      setTextActionOnLeft("Editando Slide");
-      setTextActionOnRight("Editando Slide");
-      selectSlide("slides", idToDelete).then((result) => {
+      setTextActionOnLeft("Editando Material");
+      setTextActionOnRight("Editando Material");
+      selectMaterial("material", idToDelete).then((result) => {
         if (result == undefined) {
-          alert(`Slide Nº ${idToDelete} foi removido com sucesso!`);
+          alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
         } else {
           setFormSlide({
             title: result.title,
@@ -116,11 +116,11 @@ export default function ManageSlides() {
       alert("Erro ao remover slide do banco de dados: Campo(s) vazios!");
       handleClearForm();
     } else {
-      deleteSlide("slides", idToDelete).then((result) => {
+      deleteMaterial("material", idToDelete).then((result) => {
         if (result == true) {
-          alert(`Slide Nº ${idToDelete} foi removido com sucesso!`);
+          alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
         } else {
-          alert(`Slide Nº ${idToDelete} não existe!`);
+          alert(`Material Nº ${idToDelete} não existe!`);
         }
         handleClearForm();
       });

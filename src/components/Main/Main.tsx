@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SlideList from "../SlideList/SlideList";
+import SlideList from "../MaterialList/MaterialList";
 import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 
 export default function Main() {

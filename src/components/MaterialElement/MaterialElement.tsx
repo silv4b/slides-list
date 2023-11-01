@@ -5,7 +5,7 @@ import {
   Subtitle,
   CreatedAt,
   SlideContent,
-} from "./SlideElement.Style";
+} from "./MaterialElement.Style";
 
 import { format, zonedTimeToUtc } from "date-fns-tz";
 

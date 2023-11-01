@@ -34,7 +34,7 @@ export interface Database {
   }
   public: {
     Tables: {
-      slides: {
+      material: {
         Row: {
           created_at: string
           id: number
@@ -55,6 +55,64 @@ export interface Database {
           subtitle?: string
           title?: string
           url?: string
+        }
+        Relationships: []
+      }
+      material_turma: {
+        Row: {
+          id: number
+          id_material: number | null
+          id_turma: number | null
+        }
+        Insert: {
+          id?: number
+          id_material?: number | null
+          id_turma?: number | null
+        }
+        Update: {
+          id?: number
+          id_material?: number | null
+          id_turma?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "material_turma_slides_id_fk"
+            columns: ["id_material"]
+            referencedRelation: "material"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "material_turma_turmas_id_fk"
+            columns: ["id_turma"]
+            referencedRelation: "turmas"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      turmas: {
+        Row: {
+          codigo: number
+          created_at: string
+          diario_url: string | null
+          gsa_url: string | null
+          id: number
+          nome: string
+        }
+        Insert: {
+          codigo: number
+          created_at?: string
+          diario_url?: string | null
+          gsa_url?: string | null
+          id?: number
+          nome: string
+        }
+        Update: {
+          codigo?: number
+          created_at?: string
+          diario_url?: string | null
+          gsa_url?: string | null
+          id?: number
+          nome?: string
         }
         Relationships: []
       }

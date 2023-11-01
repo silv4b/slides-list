@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Pages
-import ManageSlides from "./components/ManageSlides/ManageSlides.tsx";
+import ManageSlides from "./components/ManageSlides/ManageMaterial.tsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
 
 const router = createBrowserRouter([
