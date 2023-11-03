@@ -15,7 +15,7 @@ export const updateSlide = async (
     return false;
   } else {
     const { error } = await supabase
-      .from("slides")
+      .from(tableName)
       .update(dataToUpdate)
       .eq("id", idToUpdate);
     if (error) {
