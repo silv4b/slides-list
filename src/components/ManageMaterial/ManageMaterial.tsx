@@ -48,7 +48,6 @@ export default function ManageSlides() {
 
   const handleInsertData = async () => {
     if (idToDelete != undefined) {
-      console.log("Tá com valor!");
       updateSlide("material", idToDelete, {
         title: formSlide.title,
         subtitle: formSlide.subtitle,

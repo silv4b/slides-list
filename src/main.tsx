@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -8,12 +7,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ManageSlides from "./components/ManageMaterial/ManageMaterial.tsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
 import ClassesPage from "./components/ClassPage/ClassPage.tsx";
+import Main from "./components/Main/Main.tsx";
 
 const router = createBrowserRouter([
-  // Inicial Page
+  // Inicial Page (temp)
   {
     path: "/",
-    element: <App />,
+    element: <ClassesPage />,
+    errorElement: <ErrorPage />,
+  },
+  // Materials Page (temp)
+  {
+    path: "/materials",
+    element: <Main />,
     errorElement: <ErrorPage />,
   },
   // Manage materials

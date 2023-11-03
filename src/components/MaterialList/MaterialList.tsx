@@ -8,7 +8,7 @@ import {
 } from "../../controllers/SelectController";
 import { InputData, Container, MyButton } from "./MaterialList.Style";
 
-export default function SlideList() {
+export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
   const [posts, setPost] = useState<PostType[]>([]);
   const fetcher = useCallback(async () => {

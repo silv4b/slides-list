@@ -3,6 +3,8 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  margin: auto;
+  justify-content: center;
   align-items: center;
   background-color: grey;
   transition: 0.2s ease-in-out;

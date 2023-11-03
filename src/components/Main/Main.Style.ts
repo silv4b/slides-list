@@ -16,6 +16,13 @@ const Subtitle = styled.h3`
   margin: 1rem;
   color: gray;
   font-weight: 400;
+  text-align: center;
+
+  @media screen and (max-width: 490px) {
+    display: flex;
+    justify-content: center;
+    width: 290px;
+  }
 `;
 
 const MyLink = styled.a``;
