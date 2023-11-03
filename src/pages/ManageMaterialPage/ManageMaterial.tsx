@@ -9,36 +9,35 @@ import {
   MyButtonOutlined,
 } from "./ManageMaterial.Style";
 import { Link } from "react-router-dom";
-import { SlideType } from "../../../types/slide";
+import { MaterialType } from "../../../types/my_types";
 import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
 import { insertMaterial } from "../../controllers/InsertController";
 import { updateSlide } from "../../controllers/UpdateController";
 
 export default function ManageSlides() {
-  const [formSlide, setFormSlide] = useState<SlideType>({
+  const [formMaterial, setFormMaterial] = useState<MaterialType>({
     title: "",
     subtitle: "",
     url: "",
   });
 
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
-  const [textMainButton, setTextMainButton] = useState("Adicionar Slide");
-  const [textActionOnRight, setTextActionOnRight] = useState("Remover Slides");
-  const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar Slides");
+  const [textMainButton, setTextMainButton] = useState("Adicionar Material");
+  const [textActionOnRight, setTextActionOnRight] = useState("Remover Material");
+  const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar Material");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Decomposição
     const { name, value } = e.target;
-    console.log(e.target);
-    setFormSlide((prevData) => ({
+    setFormMaterial((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
   const handleClearForm = () => {
-    setFormSlide({
+    setFormMaterial({
       title: "",
       subtitle: "",
       url: "",
@@ -49,32 +48,32 @@ export default function ManageSlides() {
   const handleInsertData = async () => {
     if (idToDelete != undefined) {
       updateSlide("material", idToDelete, {
-        title: formSlide.title,
-        subtitle: formSlide.subtitle,
-        url: formSlide.url,
+        title: formMaterial.title,
+        subtitle: formMaterial.subtitle,
+        url: formMaterial.url,
       }).then((result) => {
         if (result == true) {
           alert(`Material Nº ${idToDelete} foi atualizado com sucesso!`);
         } else {
           alert(`Ocorreu algum erro!`);
         }
-        setTextActionOnLeft("Adicionando Slide");
-        setTextActionOnRight("Removendo Slide");
+        setTextActionOnLeft("Adicionando Material");
+        setTextActionOnRight("Removendo Material");
         handleClearForm();
       });
       return;
     }
     if (
-      formSlide.title == "" ||
-      formSlide.subtitle == "" ||
-      formSlide.url == ""
+      formMaterial.title == "" ||
+      formMaterial.subtitle == "" ||
+      formMaterial.url == ""
     ) {
       alert("Erro ao inserir material no banco de dados.");
     } else {
       insertMaterial("material", {
-        title: formSlide.title,
-        subtitle: formSlide.subtitle,
-        url: formSlide.url,
+        title: formMaterial.title,
+        subtitle: formMaterial.subtitle,
+        url: formMaterial.url,
       })
         .then((result) => {
           console.log(result);
@@ -85,7 +84,7 @@ export default function ManageSlides() {
         });
     }
     handleClearForm();
-    setTextMainButton("Adicionar Slide");
+    setTextMainButton("Adicionar Material");
   };
 
   const handleEditData = async () => {
@@ -99,7 +98,7 @@ export default function ManageSlides() {
         if (result == undefined) {
           alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
         } else {
-          setFormSlide({
+          setFormMaterial({
             title: result.title,
             subtitle: result.subtitle,
             url: result.url,
@@ -107,12 +106,12 @@ export default function ManageSlides() {
         }
       });
     }
-    setTextMainButton("Salvar Slide");
+    setTextMainButton("Salvar Material");
   };
 
   const handleRemoveData = async () => {
     if (idToDelete == undefined) {
-      alert("Erro ao remover slide do banco de dados: Campo(s) vazios!");
+      alert("Erro ao remover material do banco de dados: Campo(s) vazios!");
       handleClearForm();
     } else {
       deleteMaterial("material", idToDelete).then((result) => {
@@ -127,8 +126,8 @@ export default function ManageSlides() {
   };
 
   const handleCancelOperation = () => {
-    setTextActionOnLeft("Adicionar Slides");
-    setTextActionOnRight("Remover Slides");
+    setTextActionOnLeft("Adicionar Material");
+    setTextActionOnRight("Remover Material");
     handleClearForm();
   };
 
@@ -146,21 +145,21 @@ export default function ManageSlides() {
             type="text"
             placeholder="Título"
             name="title"
-            value={formSlide.title}
+            value={formMaterial.title}
             onChange={handleChange}
           />
           <InputData
             type="text"
             placeholder="Subtítulo"
             name="subtitle"
-            value={formSlide.subtitle}
+            value={formMaterial.subtitle}
             onChange={handleChange}
           />
           <InputData
             type="text"
             placeholder="URL"
             name="url"
-            value={formSlide.url}
+            value={formMaterial.url}
             onChange={handleChange}
           />
           <ContainerRow>
@@ -185,9 +184,9 @@ export default function ManageSlides() {
           />
           <ContainerRow>
             <MyButtonOutlined onClick={handleEditData}>
-              Editar Slide
+              Editar Material
             </MyButtonOutlined>
-            <MyButton onClick={handleRemoveData}>Remover Slide</MyButton>
+            <MyButton onClick={handleRemoveData}>Remover Material</MyButton>
           </ContainerRow>
         </Container>
       </ContainerRow>

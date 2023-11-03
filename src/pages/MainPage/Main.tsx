@@ -8,9 +8,9 @@ export default function Main() {
       {/* Aplicar depois da implementação do Auth */}
       {/* <FloatingButton/> */}
       <Title>
-        Lista de Slides<Link to="/manage-material">.</Link>
+        Lista de Materiais<Link to="/manage-material">.</Link>
       </Title>
-      <Subtitle>Slides usados nas disciplinas de PEOO e Algoritmos.</Subtitle>
+      <Subtitle>Materiais usados nas disciplinas de PEOO e Algoritmos.</Subtitle>
       <SlideList />
       <div>
         <MyLink href="https://github.com/silv4bprof" target="_blank">

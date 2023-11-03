@@ -11,7 +11,7 @@ export const deleteMaterial = async (tableName: string, idToDelete: number) => {
     return false;
   } else {
     const { error } = await supabase
-      .from("slides")
+      .from(tableName)
       .delete()
       .eq("id", idToDelete);
     if (error) {

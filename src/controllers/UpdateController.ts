@@ -1,10 +1,10 @@
 import supabase from "../../lib/supabase-client";
-import { SlideType } from "../../types/slide";
+import { MaterialType } from "../../types/my_types";
 
 export const updateSlide = async (
   tableName: string,
   idToUpdate: number,
-  dataToUpdate: Partial<SlideType>
+  dataToUpdate: Partial<MaterialType>
 ) => {
   // verifica se o material existe
   const { error, count } = await supabase

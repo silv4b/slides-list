@@ -13,8 +13,8 @@ interface IMaterialElement {
   id: number;
   title: string;
   subtitle: string;
-  created_at: string;
   url: string;
+  created_at: string;
 }
 
 export default function MaterialElement({

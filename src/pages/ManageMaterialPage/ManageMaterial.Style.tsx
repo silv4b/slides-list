@@ -73,7 +73,7 @@ const MyButtonOutlined = styled.button`
   border-radius: 0.2rem;
   transition: 0.2s ease-in-out;
   cursor: pointer;
-  background-color: #303030;
+  background-color: #313131;
 
   &:hover {
     transform: scale(1.04);

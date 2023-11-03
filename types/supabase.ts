@@ -78,12 +78,14 @@ export interface Database {
           {
             foreignKeyName: "material_turma_slides_id_fk"
             columns: ["id_material"]
+            isOneToOne: false
             referencedRelation: "material"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "material_turma_turmas_id_fk"
             columns: ["id_turma"]
+            isOneToOne: false
             referencedRelation: "turmas"
             referencedColumns: ["id"]
           }
@@ -170,6 +172,7 @@ export interface Database {
           {
             foreignKeyName: "buckets_owner_fkey"
             columns: ["owner"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -237,12 +240,14 @@ export interface Database {
           {
             foreignKeyName: "objects_bucketId_fkey"
             columns: ["bucket_id"]
+            isOneToOne: false
             referencedRelation: "buckets"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "objects_owner_fkey"
             columns: ["owner"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
