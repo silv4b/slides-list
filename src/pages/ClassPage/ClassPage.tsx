@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import { Container, MyContainer } from "./ClassPageStyle";
+import { Container, MyContainer } from "./ClassPage.Style";
 import { ClassType } from "../../../types/collections";
 import { selectMaterials } from "../../controllers/SelectController";
-import ClassElement from "../ClassElement/ClassElement";
+import ClassElement from "../../components/ClassElementComponent/ClassElement";
 
 export default function ClassesPage() {
   const [classes, setClasses] = useState<ClassType[]>([]);

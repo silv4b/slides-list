@@ -4,10 +4,10 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Pages
-import ManageSlides from "./components/ManageMaterial/ManageMaterial.tsx";
-import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
-import ClassesPage from "./components/ClassPage/ClassPage.tsx";
-import Main from "./components/Main/Main.tsx";
+import ManageSlides from "./pages/ManageMaterialPage/ManageMaterial.tsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
+import ClassesPage from "./pages/ClassPage/ClassPage.tsx";
+import Main from "./pages/MainPage/Main.tsx";
 
 const router = createBrowserRouter([
   // Inicial Page (temp)

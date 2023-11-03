@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SlideElement from "../MaterialElement/MaterialElement";
+import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
 import { PostType } from "../../../types/collections";
 import { useCallback, useEffect } from "react";
 import {
@@ -33,6 +33,9 @@ export default function MaterialList() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key == "Enter") {
       handleGetSlides(textSearch);
+    } else if (e.key == "Escape") {
+      handleGetSlides("");
+      setTextSearch("");
     }
   };
 
@@ -67,7 +70,7 @@ export default function MaterialList() {
         <MyButton onClick={() => handleGetSlides(textSearch)}> 🔎 </MyButton>
       </Container>
       {posts.map((post) => (
-        <SlideElement
+        <MaterialElement
           key={post.id}
           id={post.id}
           title={post.title}

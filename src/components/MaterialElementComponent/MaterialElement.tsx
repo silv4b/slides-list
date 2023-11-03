@@ -9,7 +9,7 @@ import {
 
 import { format, zonedTimeToUtc } from "date-fns-tz";
 
-interface ISlideElement {
+interface IMaterialElement {
   id: number;
   title: string;
   subtitle: string;
@@ -23,7 +23,7 @@ export default function MaterialElement({
   subtitle,
   created_at,
   url,
-}: Partial<ISlideElement>) {
+}: Partial<IMaterialElement>) {
   const dataOriginal: string = created_at as string;
   const dataUTC = zonedTimeToUtc(dataOriginal, "UTC");
   const dataFormatada: string = format(dataUTC, "dd/MM/yyyy");
