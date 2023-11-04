@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   },
   // Manage materials
   {
-    path: "/manage-material",
+    path: "/management",
     element: <ManageSlides />,
     errorElement: <ErrorPage />,
   },

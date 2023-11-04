@@ -6,7 +6,6 @@ import {
   Subtitle,
   InputData,
   MyButton,
-  MyButtonOutlined,
 } from "./ManageMaterial.Style";
 import { Link } from "react-router-dom";
 import { MaterialType } from "../../../types/my_types";
@@ -23,9 +22,9 @@ export default function ManageSlides() {
   });
 
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
-  const [textMainButton, setTextMainButton] = useState("Adicionar Material");
-  const [textActionOnRight, setTextActionOnRight] = useState("Remover Material");
-  const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar Material");
+  const [textMainButton, setTextMainButton] = useState("Adicionar");
+  const [textActionOnRight, setTextActionOnRight] = useState("Remover");
+  const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Decomposição
@@ -84,7 +83,7 @@ export default function ManageSlides() {
         });
     }
     handleClearForm();
-    setTextMainButton("Adicionar Material");
+    setTextMainButton("Adicionar");
   };
 
   const handleEditData = async () => {
@@ -106,7 +105,7 @@ export default function ManageSlides() {
         }
       });
     }
-    setTextMainButton("Salvar Material");
+    setTextMainButton("Salvar");
   };
 
   const handleRemoveData = async () => {
@@ -126,8 +125,8 @@ export default function ManageSlides() {
   };
 
   const handleCancelOperation = () => {
-    setTextActionOnLeft("Adicionar Material");
-    setTextActionOnRight("Remover Material");
+    setTextActionOnLeft("Adicionar");
+    setTextActionOnRight("Remover");
     handleClearForm();
   };
 
@@ -163,9 +162,7 @@ export default function ManageSlides() {
             onChange={handleChange}
           />
           <ContainerRow>
-            <MyButtonOutlined onClick={handleInsertData}>
-              {textMainButton}
-            </MyButtonOutlined>
+            <MyButton onClick={handleInsertData}>{textMainButton}</MyButton>
             <MyButton onClick={handleCancelOperation}>Cancelar</MyButton>
           </ContainerRow>
         </Container>
@@ -183,10 +180,8 @@ export default function ManageSlides() {
             }
           />
           <ContainerRow>
-            <MyButtonOutlined onClick={handleEditData}>
-              Editar Material
-            </MyButtonOutlined>
-            <MyButton onClick={handleRemoveData}>Remover Material</MyButton>
+            <MyButton onClick={handleEditData}>Editar</MyButton>
+            <MyButton onClick={handleRemoveData}>Remover</MyButton>
           </ContainerRow>
         </Container>
       </ContainerRow>

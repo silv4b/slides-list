@@ -7,6 +7,7 @@ import {
   selectMaterialByText,
 } from "../../controllers/SelectController";
 import { InputData, Container, MyButton } from "./MaterialList.Style";
+import { FiSearch } from "react-icons/fi";
 
 export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
@@ -67,7 +68,10 @@ export default function MaterialList() {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-        <MyButton onClick={() => handleGetSlides(textSearch)}> 🔎 </MyButton>
+        <MyButton onClick={() => handleGetSlides(textSearch)}>
+          {" "}
+          <FiSearch />{" "}
+        </MyButton>
       </Container>
       {posts.map((post) => (
         <MaterialElement

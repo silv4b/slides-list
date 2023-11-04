@@ -37,43 +37,29 @@ const InputData = styled.input`
   height: 1rem;
   padding: 1em;
   margin: 0.5em 0 0.5em 0;
-  border: none;
-  border-radius: 0.2rem;
+  background-color: #202024;
+  border-radius: 4px;
+  border: solid;
+  border-color: #303030;
+  border-width: 0.02rem;
 `;
 
 const MyButton = styled.button`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 1rem;
   padding: 1.3rem;
   align-items: center;
   margin: 0.5em 0 0.5em 0;
-  border: none;
-  border-radius: 0.2rem;
   transition: 0.2s ease-in-out;
   cursor: pointer;
-
-  &:hover {
-    transform: scale(1.04);
-    background-color: #999999;
-    color: black;
-  }
-`;
-
-const MyButtonOutlined = styled.button`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 1rem;
-  padding: 1.3rem;
-  align-items: center;
-  margin: 0.5em 0 0.5em 0;
-  border: none;
-  border-radius: 0.2rem;
-  transition: 0.2s ease-in-out;
-  cursor: pointer;
-  background-color: #313131;
+  background-color: #202024;
+  border-radius: 4px;
+  border: solid;
+  border-color: #303030;
+  border-width: 0.02rem;
 
   &:hover {
     transform: scale(1.04);
@@ -91,6 +77,5 @@ export {
   Link,
   InputData,
   MyButton,
-  MyButtonOutlined,
   ContainerRow,
 };

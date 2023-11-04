@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 const MaterialContainer = styled.div`
   background-color: #2d2d2d;
-  width: 360px;
-  border-radius: 4px;
+  width: 100%;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
   margin-bottom: 1rem;
   background-color: #202024;
+  border-radius: 4px;
+  border: solid;
+  border-color: #303030;
+  border-width: 0.02rem;
+  transition: 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.03);

@@ -1,9 +1,10 @@
-import "./FloatingButton.css"
+import { FaPlus } from "react-icons/fa";
+import { MyFloatingButton } from "./FloatingButton.Style";
 
 export default function FloatingButton() {
   return (
-    <div className="floating-button">
-      <button>➕</button>
-    </div>
+    <MyFloatingButton>
+      <FaPlus />
+    </MyFloatingButton>
   );
 }

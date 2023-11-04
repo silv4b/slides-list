@@ -9,10 +9,8 @@ const Container = styled.div`
 const MyContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-  /* background-color: grey; */
-  padding: 1rem;
-  max-width: 1220px;
+  justify-content: center;
+  max-width: 1230px;
 `;
 
 export { Container, MyContainer };
