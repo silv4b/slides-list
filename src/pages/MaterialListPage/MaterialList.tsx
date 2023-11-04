@@ -1,14 +1,15 @@
 import { useState } from "react";
-import SlideElement from "../MaterialElement/MaterialElement";
+import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
 import { PostType } from "../../../types/collections";
 import { useCallback, useEffect } from "react";
 import {
   selectMaterials,
   selectMaterialByText,
-} from "../../controllers/material/SelectController";
+} from "../../controllers/SelectController";
 import { InputData, Container, MyButton } from "./MaterialList.Style";
+import { FiSearch } from "react-icons/fi";
 
-export default function SlideList() {
+export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
   const [posts, setPost] = useState<PostType[]>([]);
   const fetcher = useCallback(async () => {
@@ -33,6 +34,9 @@ export default function SlideList() {
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key == "Enter") {
       handleGetSlides(textSearch);
+    } else if (e.key == "Escape") {
+      handleGetSlides("");
+      setTextSearch("");
     }
   };
 
@@ -64,10 +68,13 @@ export default function SlideList() {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-        <MyButton onClick={() => handleGetSlides(textSearch)}> 🔎 </MyButton>
+        <MyButton onClick={() => handleGetSlides(textSearch)}>
+          {" "}
+          <FiSearch />{" "}
+        </MyButton>
       </Container>
       {posts.map((post) => (
-        <SlideElement
+        <MaterialElement
           key={post.id}
           id={post.id}
           title={post.title}

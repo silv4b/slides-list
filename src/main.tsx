@@ -1,24 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Pages
-import ManageSlides from "./components/ManageSlides/ManageMaterial.tsx";
-import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
+import ManageSlides from "./pages/ManageMaterialPage/ManageMaterial.tsx";
+import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
+import ClassesPage from "./pages/ClassPage/ClassPage.tsx";
+import Main from "./pages/MainPage/Main.tsx";
 
 const router = createBrowserRouter([
-  // Inicial Page - App
+  // Inicial Page (temp)
   {
     path: "/",
-    element: <App />,
+    element: <ClassesPage />,
     errorElement: <ErrorPage />,
   },
-  // Add/Del Slides to Supabase API - AddSlide
+  // Materials Page (temp)
   {
-    path: "/manage",
+    path: "/materials",
+    element: <Main />,
+    errorElement: <ErrorPage />,
+  },
+  // Manage materials
+  {
+    path: "/management",
     element: <ManageSlides />,
+    errorElement: <ErrorPage />,
+  },
+  // Manage Classes
+  {
+    path: "/classes",
+    element: <ClassesPage />,
     errorElement: <ErrorPage />,
   },
 ]);

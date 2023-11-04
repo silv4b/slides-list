@@ -5,13 +5,15 @@ const InputData = styled.input`
   height: 1rem;
   padding: 1em;
   margin: 0.5em 0 0.5em 0;
-  border: none;
-  border-radius: 0.2rem;
   background-color: #202024;
+  border-radius: 4px;
+  border: solid;
+  border-color: #303030;
+  border-width: 0.02rem;
 `;
 
 const Container = styled.div`
-  width: 360px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -25,16 +27,16 @@ const Container = styled.div`
 const MyButton = styled.button`
   display: flex;
   justify-content: center;
-  width: 3rem;
-  height: 1rem;
-  padding: 1.3rem;
   align-items: center;
+  width: 4rem;
   margin: 0.5em 0 0.5em 0;
-  border: none;
-  border-radius: 0.2rem;
   transition: 0.2s ease-in-out;
   cursor: pointer;
   background-color: #202024;
+  border-radius: 4px;
+  border: solid;
+  border-color: #303030;
+  border-width: 0.02rem;
 
   &:hover {
     transform: scale(1.04);
@@ -43,4 +45,4 @@ const MyButton = styled.button`
   }
 `;
 
-export { InputData, Container, MyButton};
+export { InputData, Container, MyButton };

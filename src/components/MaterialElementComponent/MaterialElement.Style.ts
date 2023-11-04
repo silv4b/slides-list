@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
-const SlideContainer = styled.div`
+const MaterialContainer = styled.div`
   background-color: #2d2d2d;
-  width: 360px;
-  border-radius: 4px;
+  width: 100%;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
   margin-bottom: 1rem;
   background-color: #202024;
+  border-radius: 4px;
+  border: solid;
+  border-color: #303030;
+  border-width: 0.02rem;
+  transition: 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.03);
@@ -19,7 +22,7 @@ const SlideContainer = styled.div`
   }
 `;
 
-const Slide = styled.div`
+const Material = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,7 +41,7 @@ const Slide = styled.div`
   }
 `;
 
-const SlideContent = styled.div`
+const MaterialContent = styled.div`
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -71,4 +74,11 @@ const CreatedAt = styled.p`
   color: #8b8b8d;
 `;
 
-export { SlideContainer, Slide, Title, Subtitle, CreatedAt, SlideContent };
+export {
+  MaterialContainer,
+  Material,
+  MaterialContent,
+  Title,
+  Subtitle,
+  CreatedAt,
+};

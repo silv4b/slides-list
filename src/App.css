@@ -1,11 +1,3 @@
-#root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
-    text-align: center;
-}
-
 /* scroll bar width */
 ::-webkit-scrollbar {
     width: 7px;

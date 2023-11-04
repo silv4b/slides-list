@@ -1,23 +1,19 @@
-import supabase from "../../../lib/supabase-client";
-import { SlideType } from "../../../types/slide";
+import supabase from "../../lib/supabase-client";
 
-export const updateSlide = async (
-  tableName: string,
-  idToUpdate: number,
-  dataToUpdate: Partial<SlideType>
-) => {
+export const deleteMaterial = async (tableName: string, idToDelete: number) => {
   // verifica se o material existe
   const { error, count } = await supabase
     .from(tableName)
     .select("*", { count: "exact", head: true })
-    .eq("id", idToUpdate);
+    .eq("id", idToDelete);
+  // organizar essa estratégia pra deixar padronizado
   if (error || count == null || count == 0) {
     return false;
   } else {
     const { error } = await supabase
       .from(tableName)
-      .update(dataToUpdate)
-      .eq("id", idToUpdate);
+      .delete()
+      .eq("id", idToDelete);
     if (error) {
       return false;
     } else {
