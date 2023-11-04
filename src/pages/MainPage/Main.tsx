@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import SlideList from "../MaterialListPage/MaterialList";
+import MaterialList from "../MaterialListPage/MaterialList";
 import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 import ScrollUpButton from "../../components/ScrollUpButtonComponent/ScrollUpButton";
 
@@ -15,7 +15,7 @@ export default function Main() {
       <Subtitle>
         Materiais usados nas disciplinas de PEOO e Algoritmos.
       </Subtitle>
-      <SlideList />
+      <MaterialList />
       <div>
         <MyLink href="https://github.com/silv4bprof" target="_blank">
           Exemplos{" "}

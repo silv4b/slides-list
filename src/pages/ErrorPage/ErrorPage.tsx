@@ -1,7 +1,7 @@
 import { Container, Title, Subtitle } from "./ErrorPage.Style";
 import { Link } from "react-router-dom";
 
-export default function ManageSlides() {
+export default function ErrorPage() {
   return (
     <Container>
       <Title>

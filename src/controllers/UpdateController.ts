@@ -1,7 +1,7 @@
 import supabase from "../../lib/supabase-client";
 import { MaterialType } from "../../types/my_types";
 
-export const updateSlide = async (
+export const updateMaterial = async (
   tableName: string,
   idToUpdate: number,
   dataToUpdate: Partial<MaterialType>

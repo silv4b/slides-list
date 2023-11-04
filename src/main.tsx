@@ -4,7 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Pages
-import ManageSlides from "./pages/ManageMaterialPage/ManageMaterial.tsx";
+import ManageMaterial from "./pages/ManageMaterialPage/ManageMaterial.tsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
 import ClassesPage from "./pages/ClassPage/ClassPage.tsx";
 import Main from "./pages/MainPage/Main.tsx";
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
   // Manage materials
   {
     path: "/management",
-    element: <ManageSlides />,
+    element: <ManageMaterial />,
     errorElement: <ErrorPage />,
   },
   // Manage Classes

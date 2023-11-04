@@ -33,14 +33,14 @@ export default function MaterialList() {
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key == "Enter") {
-      handleGetSlides(textSearch);
+      handleGetMaterials(textSearch);
     } else if (e.key == "Escape") {
-      handleGetSlides("");
+      handleGetMaterials("");
       setTextSearch("");
     }
   };
 
-  const handleGetSlides = (textSearch: string) => {
+  const handleGetMaterials = (textSearch: string) => {
     if (textSearch == "") {
       fetcher();
     } else {
@@ -68,7 +68,7 @@ export default function MaterialList() {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-        <MyButton onClick={() => handleGetSlides(textSearch)}>
+        <MyButton onClick={() => handleGetMaterials(textSearch)}>
           {" "}
           <FiSearch />{" "}
         </MyButton>
