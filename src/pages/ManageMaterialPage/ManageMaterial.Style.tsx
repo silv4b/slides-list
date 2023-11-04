@@ -70,12 +70,4 @@ const MyButton = styled.button`
 
 const Link = styled.a``;
 
-export {
-  Container,
-  Title,
-  Subtitle,
-  Link,
-  InputData,
-  MyButton,
-  ContainerRow,
-};
+export { Container, Title, Subtitle, Link, InputData, MyButton, ContainerRow };

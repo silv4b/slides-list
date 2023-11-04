@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Container,
   ContainerRow,
@@ -7,27 +7,31 @@ import {
   InputData,
   MyButton,
 } from "./ManageMaterial.Style";
+import Dialog from "../../components/DialogComponent/Dialog";
 import { Link } from "react-router-dom";
 import { MaterialType } from "../../../types/my_types";
 import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
 import { insertMaterial } from "../../controllers/InsertController";
-import { updateSlide } from "../../controllers/UpdateController";
+import { updateMaterial } from "../../controllers/UpdateController";
 
-export default function ManageSlides() {
+export default function ManageMaterial() {
   const [formMaterial, setFormMaterial] = useState<MaterialType>({
     title: "",
     subtitle: "",
     url: "",
   });
 
+  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
   const [textMainButton, setTextMainButton] = useState("Adicionar");
   const [textActionOnRight, setTextActionOnRight] = useState("Remover");
   const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar");
+  const [confirmFunction, setConfirmFunction] = useState<(() => void) | null>(
+    null
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Decomposição
     const { name, value } = e.target;
     setFormMaterial((prevData) => ({
       ...prevData,
@@ -44,49 +48,56 @@ export default function ManageSlides() {
     setIdToDelete(undefined);
   };
 
+  const openConfirmationDialog = (confirmAction: () => void) => {
+    setConfirmFunction(() => confirmAction);
+    setIsConfirmationVisible(true);
+  };
+
   const handleInsertData = async () => {
-    if (idToDelete != undefined) {
-      updateSlide("material", idToDelete, {
-        title: formMaterial.title,
-        subtitle: formMaterial.subtitle,
-        url: formMaterial.url,
-      }).then((result) => {
-        if (result == true) {
-          alert(`Material Nº ${idToDelete} foi atualizado com sucesso!`);
-        } else {
-          alert(`Ocorreu algum erro!`);
-        }
-        setTextActionOnLeft("Adicionando Material");
-        setTextActionOnRight("Removendo Material");
-        handleClearForm();
-      });
-      return;
-    }
-    if (
-      formMaterial.title == "" ||
-      formMaterial.subtitle == "" ||
-      formMaterial.url == ""
-    ) {
-      alert("Erro ao inserir material no banco de dados.");
-    } else {
-      insertMaterial("material", {
-        title: formMaterial.title,
-        subtitle: formMaterial.subtitle,
-        url: formMaterial.url,
-      })
-        .then((result) => {
-          console.log(result);
-          alert(`Dados inseridos corretamente no banco de dados: ${result}`);
-        })
-        .catch((error) => {
-          alert(`Erro ao inserir dados no banco de dados: ${error.message}`);
+    openConfirmationDialog(() => {
+      // Lógica a ser executada quando o usuário confirma
+      if (idToDelete != undefined) {
+        updateMaterial("material", idToDelete, {
+          title: formMaterial.title,
+          subtitle: formMaterial.subtitle,
+          url: formMaterial.url,
+        }).then((result) => {
+          if (result == true) {
+            alert(`Material Nº ${idToDelete} foi atualizado com sucesso!`);
+          } else {
+            alert(`Ocorreu algum erro!`);
+          }
+          setTextActionOnLeft("Adicionando Material");
+          setTextActionOnRight("Removendo Material");
+          handleClearForm();
         });
-    }
-    handleClearForm();
-    setTextMainButton("Adicionar");
+      } else if (
+        formMaterial.title == "" ||
+        formMaterial.subtitle == "" ||
+        formMaterial.url == ""
+      ) {
+        alert("Erro ao inserir material no banco de dados.");
+      } else {
+        insertMaterial("material", {
+          title: formMaterial.title,
+          subtitle: formMaterial.subtitle,
+          url: formMaterial.url,
+        })
+          .then((result) => {
+            console.log(result);
+            alert(`Dados inseridos corretamente no banco de dados: ${result}`);
+          })
+          .catch((error) => {
+            alert(`Erro ao inserir dados no banco de dados: ${error.message}`);
+          });
+      }
+      handleClearForm();
+      setTextMainButton("Adicionar");
+    });
   };
 
   const handleEditData = async () => {
+    // openConfirmationDialog(() => {
     if (idToDelete == undefined) {
       alert("Erro ao recuperar material do banco de dados!");
       handleClearForm();
@@ -106,28 +117,45 @@ export default function ManageSlides() {
       });
     }
     setTextMainButton("Salvar");
+    // });
   };
 
   const handleRemoveData = async () => {
-    if (idToDelete == undefined) {
-      alert("Erro ao remover material do banco de dados: Campo(s) vazios!");
-      handleClearForm();
-    } else {
-      deleteMaterial("material", idToDelete).then((result) => {
-        if (result == true) {
-          alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
-        } else {
-          alert(`Material Nº ${idToDelete} não existe!`);
-        }
+    openConfirmationDialog(() => {
+      if (idToDelete == undefined) {
+        alert("Erro ao remover material do banco de dados: Campo(s) vazios!");
         handleClearForm();
-      });
-    }
+      } else {
+        deleteMaterial("material", idToDelete).then((result) => {
+          if (result == true) {
+            alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
+          } else {
+            alert(`Material Nº ${idToDelete} não existe!`);
+          }
+          handleClearForm();
+        });
+      }
+    });
   };
 
   const handleCancelOperation = () => {
-    setTextActionOnLeft("Adicionar");
-    setTextActionOnRight("Remover");
-    handleClearForm();
+    // melhorar para aparecer apenas se algum dado tiver sido preenchido
+    openConfirmationDialog(() => {
+      setTextActionOnLeft("Adicionar");
+      setTextActionOnRight("Remover");
+      handleClearForm();
+    });
+  };
+
+  const handleConfirm = () => {
+    if (confirmFunction) {
+      confirmFunction();
+    }
+    setIsConfirmationVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsConfirmationVisible(false);
   };
 
   return (
@@ -185,6 +213,9 @@ export default function ManageSlides() {
           </ContainerRow>
         </Container>
       </ContainerRow>
+      {isConfirmationVisible && (
+        <Dialog onConfirm={handleConfirm} onCancel={handleCancel} />
+      )}
     </>
   );
 }
