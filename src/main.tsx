@@ -13,7 +13,8 @@ const router = createBrowserRouter([
   // Inicial Page (temp)
   {
     path: "/",
-    element: <ClassesPage />,
+    // element: <ClassesPage />,
+    element: <Main />,
     errorElement: <ErrorPage />,
   },
   // Materials Page (temp)

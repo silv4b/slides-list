@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const MyFloatingButton = styled.button`
+const MyScrollUpButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,4 +26,4 @@ const MyFloatingButton = styled.button`
   }
 `;
 
-export { MyFloatingButton };
+export { MyScrollUpButton };
