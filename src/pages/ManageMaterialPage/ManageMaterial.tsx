@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ReactNotifications, Store } from "react-notifications-component";
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
 import {
   Container,
@@ -10,21 +11,13 @@ import {
   MyButton,
   ButtonContainer,
 } from "./ManageMaterial.Style";
-import Dialog from "../../components/DialogComponent/Dialog";
+import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
 import { Link } from "react-router-dom";
 import { MaterialType } from "../../../types/my_types";
 import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
 import { insertMaterial } from "../../controllers/InsertController";
 import { updateMaterial } from "../../controllers/UpdateController";
-import NotificationComponent from "../../components/NotificationComponent/Notification";
-
-interface INotification {
-  title: string;
-  content: string;
-  width: number;
-  time: number;
-}
 
 export default function ManageMaterial() {
   const [formMaterial, setFormMaterial] = useState<MaterialType>({
@@ -45,6 +38,7 @@ export default function ManageMaterial() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormMaterial((prevData) => ({
+      // spread operator
       ...prevData,
       [name]: value,
     }));
@@ -74,14 +68,14 @@ export default function ManageMaterial() {
           url: formMaterial.url,
         }).then((result) => {
           if (result == true) {
-            handleNotification({
+            ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} foi atualizado com sucesso!`,
               time: 2000,
               width: 400,
             });
           } else {
-            handleNotification({
+            ShowNotification({
               title: "Notificação",
               content: "Ocorreu algum erro!",
               time: 2000,
@@ -97,7 +91,7 @@ export default function ManageMaterial() {
         formMaterial.subtitle == "" ||
         formMaterial.url == ""
       ) {
-        handleNotification({
+        ShowNotification({
           title: "Notificação",
           content: "Erro ao inserir material no banco de dados.",
           time: 2000,
@@ -111,7 +105,7 @@ export default function ManageMaterial() {
         })
           .then((result) => {
             console.log(result);
-            handleNotification({
+            ShowNotification({
               title: "Notificação",
               content: `Dados inseridos corretamente no banco de dados: ${result}`,
               time: 2000,
@@ -119,7 +113,7 @@ export default function ManageMaterial() {
             });
           })
           .catch((error) => {
-            handleNotification({
+            ShowNotification({
               title: "Notificação",
               content: `Erro ao inserir dados no banco de dados: ${error.message}`,
               time: 2000,
@@ -134,7 +128,7 @@ export default function ManageMaterial() {
 
   const handleEditData = async () => {
     if (idToDelete == undefined) {
-      handleNotification({
+      ShowNotification({
         title: "Notificação",
         content: "Erro ao recuperar material do banco de dados!",
         time: 2000,
@@ -144,7 +138,7 @@ export default function ManageMaterial() {
     } else {
       selectMaterial("material", idToDelete).then((result) => {
         if (result == undefined) {
-          handleNotification({
+          ShowNotification({
             title: "Notificação",
             content: `Material Nº ${idToDelete} não foi encontrado.`,
             time: 2000,
@@ -167,25 +161,25 @@ export default function ManageMaterial() {
   const handleRemoveData = async () => {
     openConfirmationDialog(() => {
       if (idToDelete == undefined) {
-        handleNotification({
+        ShowNotification({
           title: "Notificação",
           content:
             "Erro ao remover material do banco de dados: Campo(s) vazios!",
-          time: 2000,
+          time: 4000,
           width: 400,
         });
         handleClearForm();
       } else {
         deleteMaterial("material", idToDelete).then((result) => {
           if (result == true) {
-            handleNotification({
+            ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} foi removido com sucesso!`,
               time: 2000,
               width: 400,
             });
           } else {
-            handleNotification({
+            ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} não existe!`,
               time: 2000,
@@ -203,7 +197,7 @@ export default function ManageMaterial() {
       setTextActionOnLeft("Adicionar");
       setTextActionOnRight("Remover");
       handleClearForm();
-      handleNotification({
+      ShowNotification({
         title: "Notificação",
         content: "Operação cancelada.",
         time: 2000,
@@ -221,29 +215,11 @@ export default function ManageMaterial() {
 
   const handleCancel = () => {
     setIsConfirmationVisible(false);
-    handleNotification({
+    ShowNotification({
       title: "Notificação",
       content: "Operação cancelada.",
       time: 2000,
       width: 400,
-    });
-  };
-
-  const handleNotification = (prop: INotification) => {
-    Store.addNotification({
-      content: NotificationComponent({
-        title: prop.title,
-        message: prop.content,
-      }),
-      type: "success",
-      insert: "top",
-      container: "top-left",
-      animationIn: ["animate__animated", "animate__fadeIn"],
-      animationOut: ["animate__animated", "animate__fadeOut"],
-      dismiss: {
-        duration: prop.time,
-      },
-      width: prop.width,
     });
   };
 

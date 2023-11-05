@@ -4,7 +4,7 @@ import {
   ButtonContainer,
   MyButton,
   MyButtonLink,
-} from "./Dialog.Style";
+} from "./ConfirmationDialog.Style";
 
 interface IConfirmationDialog {
   onConfirm: () => void;
