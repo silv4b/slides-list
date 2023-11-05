@@ -27,7 +27,18 @@ a:hover {
 body {
     display: flex;
     flex-direction: column;
-    place-items: center;
-    min-width: 320px;
-    min-height: 100vh;
+    margin: 0;
+}
+
+.rnc__notification-container--top-left {
+    width: 0 !important;
+    min-width: 0 !important;
+    position: absolute !important;
+}
+
+.rnc__notification-item {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    min-width: auto;
 }

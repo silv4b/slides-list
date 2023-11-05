@@ -6,7 +6,12 @@ import {
   selectMaterials,
   selectMaterialByText,
 } from "../../controllers/SelectController";
-import { InputData, Container, MyButton } from "./MaterialList.Style";
+import {
+  InputData,
+  RowContainer,
+  Container,
+  MyButton,
+} from "./MaterialList.Style";
 import { FiSearch } from "react-icons/fi";
 
 export default function MaterialList() {
@@ -58,8 +63,8 @@ export default function MaterialList() {
   };
 
   return (
-    <>
-      <Container>
+    <Container>
+      <RowContainer>
         <InputData
           type="text"
           placeholder="Pesquise materiais"
@@ -72,7 +77,7 @@ export default function MaterialList() {
           {" "}
           <FiSearch />{" "}
         </MyButton>
-      </Container>
+      </RowContainer>
       {posts.map((post) => (
         <MaterialElement
           key={post.id}
@@ -83,6 +88,6 @@ export default function MaterialList() {
           url={post.url}
         />
       ))}
-    </>
+    </Container>
   );
 }

@@ -8,9 +8,10 @@ const Container = styled.div`
 
 const MyContainer = styled.div`
   display: flex;
+  max-width: 1600px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1230px;
+  align-content: center;
 `;
 
 export { Container, MyContainer };

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ReactNotifications, Store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import {
   Container,
   ContainerRow,
@@ -6,6 +8,7 @@ import {
   Subtitle,
   InputData,
   MyButton,
+  ButtonContainer,
 } from "./ManageMaterial.Style";
 import Dialog from "../../components/DialogComponent/Dialog";
 import { Link } from "react-router-dom";
@@ -14,6 +17,14 @@ import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
 import { insertMaterial } from "../../controllers/InsertController";
 import { updateMaterial } from "../../controllers/UpdateController";
+import NotificationComponent from "../../components/NotificationComponent/Notification";
+
+interface INotification {
+  title: string;
+  content: string;
+  width: number;
+  time: number;
+}
 
 export default function ManageMaterial() {
   const [formMaterial, setFormMaterial] = useState<MaterialType>({
@@ -63,9 +74,19 @@ export default function ManageMaterial() {
           url: formMaterial.url,
         }).then((result) => {
           if (result == true) {
-            alert(`Material Nº ${idToDelete} foi atualizado com sucesso!`);
+            handleNotification({
+              title: "Notificação",
+              content: `Material Nº ${idToDelete} foi atualizado com sucesso!`,
+              time: 2000,
+              width: 400,
+            });
           } else {
-            alert(`Ocorreu algum erro!`);
+            handleNotification({
+              title: "Notificação",
+              content: "Ocorreu algum erro!",
+              time: 2000,
+              width: 400,
+            });
           }
           setTextActionOnLeft("Adicionando Material");
           setTextActionOnRight("Removendo Material");
@@ -76,7 +97,12 @@ export default function ManageMaterial() {
         formMaterial.subtitle == "" ||
         formMaterial.url == ""
       ) {
-        alert("Erro ao inserir material no banco de dados.");
+        handleNotification({
+          title: "Notificação",
+          content: "Erro ao inserir material no banco de dados.",
+          time: 2000,
+          width: 400,
+        });
       } else {
         insertMaterial("material", {
           title: formMaterial.title,
@@ -85,10 +111,20 @@ export default function ManageMaterial() {
         })
           .then((result) => {
             console.log(result);
-            alert(`Dados inseridos corretamente no banco de dados: ${result}`);
+            handleNotification({
+              title: "Notificação",
+              content: `Dados inseridos corretamente no banco de dados: ${result}`,
+              time: 2000,
+              width: 400,
+            });
           })
           .catch((error) => {
-            alert(`Erro ao inserir dados no banco de dados: ${error.message}`);
+            handleNotification({
+              title: "Notificação",
+              content: `Erro ao inserir dados no banco de dados: ${error.message}`,
+              time: 2000,
+              width: 400,
+            });
           });
       }
       handleClearForm();
@@ -97,17 +133,27 @@ export default function ManageMaterial() {
   };
 
   const handleEditData = async () => {
-    // openConfirmationDialog(() => {
     if (idToDelete == undefined) {
-      alert("Erro ao recuperar material do banco de dados!");
+      handleNotification({
+        title: "Notificação",
+        content: "Erro ao recuperar material do banco de dados!",
+        time: 2000,
+        width: 400,
+      });
       handleClearForm();
     } else {
-      setTextActionOnLeft("Editando Material");
-      setTextActionOnRight("Editando Material");
       selectMaterial("material", idToDelete).then((result) => {
         if (result == undefined) {
-          alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
+          handleNotification({
+            title: "Notificação",
+            content: `Material Nº ${idToDelete} não foi encontrado.`,
+            time: 2000,
+            width: 400,
+          });
         } else {
+          setTextActionOnLeft("Editando Material");
+          setTextActionOnRight("Editando Material");
+          setTextMainButton("Salvar");
           setFormMaterial({
             title: result.title,
             subtitle: result.subtitle,
@@ -116,21 +162,35 @@ export default function ManageMaterial() {
         }
       });
     }
-    setTextMainButton("Salvar");
-    // });
   };
 
   const handleRemoveData = async () => {
     openConfirmationDialog(() => {
       if (idToDelete == undefined) {
-        alert("Erro ao remover material do banco de dados: Campo(s) vazios!");
+        handleNotification({
+          title: "Notificação",
+          content:
+            "Erro ao remover material do banco de dados: Campo(s) vazios!",
+          time: 2000,
+          width: 400,
+        });
         handleClearForm();
       } else {
         deleteMaterial("material", idToDelete).then((result) => {
           if (result == true) {
-            alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
+            handleNotification({
+              title: "Notificação",
+              content: `Material Nº ${idToDelete} foi removido com sucesso!`,
+              time: 2000,
+              width: 400,
+            });
           } else {
-            alert(`Material Nº ${idToDelete} não existe!`);
+            handleNotification({
+              title: "Notificação",
+              content: `Material Nº ${idToDelete} não existe!`,
+              time: 2000,
+              width: 400,
+            });
           }
           handleClearForm();
         });
@@ -139,11 +199,16 @@ export default function ManageMaterial() {
   };
 
   const handleCancelOperation = () => {
-    // melhorar para aparecer apenas se algum dado tiver sido preenchido
     openConfirmationDialog(() => {
       setTextActionOnLeft("Adicionar");
       setTextActionOnRight("Remover");
       handleClearForm();
+      handleNotification({
+        title: "Notificação",
+        content: "Operação cancelada.",
+        time: 2000,
+        width: 400,
+      });
     });
   };
 
@@ -156,10 +221,35 @@ export default function ManageMaterial() {
 
   const handleCancel = () => {
     setIsConfirmationVisible(false);
+    handleNotification({
+      title: "Notificação",
+      content: "Operação cancelada.",
+      time: 2000,
+      width: 400,
+    });
+  };
+
+  const handleNotification = (prop: INotification) => {
+    Store.addNotification({
+      content: NotificationComponent({
+        title: prop.title,
+        message: prop.content,
+      }),
+      type: "success",
+      insert: "top",
+      container: "top-left",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: prop.time,
+      },
+      width: prop.width,
+    });
   };
 
   return (
     <>
+      <ReactNotifications />
       <ContainerRow>
         <Container>
           <Title>
@@ -189,10 +279,10 @@ export default function ManageMaterial() {
             value={formMaterial.url}
             onChange={handleChange}
           />
-          <ContainerRow>
+          <ButtonContainer>
             <MyButton onClick={handleInsertData}>{textMainButton}</MyButton>
             <MyButton onClick={handleCancelOperation}>Cancelar</MyButton>
-          </ContainerRow>
+          </ButtonContainer>
         </Container>
 
         <Container>
@@ -207,10 +297,10 @@ export default function ManageMaterial() {
               setIdToDelete(parseInt(e.target.value) || undefined)
             }
           />
-          <ContainerRow>
+          <ButtonContainer>
             <MyButton onClick={handleEditData}>Editar</MyButton>
             <MyButton onClick={handleRemoveData}>Remover</MyButton>
-          </ContainerRow>
+          </ButtonContainer>
         </Container>
       </ContainerRow>
       {isConfirmationVisible && (
