@@ -1,13 +1,19 @@
-import { useState } from "react";
 import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
 import { PostType } from "../../../types/collections";
-import { useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   selectMaterials,
   selectMaterialByText,
 } from "../../controllers/SelectController";
-import { InputData, Container, MyButton } from "./MaterialList.Style";
+import {
+  InputData,
+  RowContainer,
+  Container,
+  MyButton,
+} from "./MaterialList.Style";
 import { FiSearch } from "react-icons/fi";
+import { ReactNotifications } from "react-notifications-component";
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
 
 export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
@@ -46,10 +52,19 @@ export default function MaterialList() {
     } else {
       selectMaterialByText("material", "title", textSearch).then((result) => {
         if (result == "error") {
-          alert(`Erro ao recuperar material!`);
-          console.error(result);
+          ShowNotification({
+            title: "Notificação",
+            content: "Erro ao recuperar material!",
+            time: 4000,
+            width: 400,
+          });
         } else if (result.length == 0) {
-          alert("Nenhum material coincide com a pesquisa!");
+          ShowNotification({
+            title: "Notificação",
+            content: "Nenhum material coincide com a pesquisa!",
+            time: 4000,
+            width: 400,
+          });
         } else {
           setPost(result);
         }
@@ -59,30 +74,33 @@ export default function MaterialList() {
 
   return (
     <>
+      <ReactNotifications />
       <Container>
-        <InputData
-          type="text"
-          placeholder="Pesquise materiais"
-          name="pesquisa"
-          value={textSearch}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-        <MyButton onClick={() => handleGetMaterials(textSearch)}>
-          {" "}
-          <FiSearch />{" "}
-        </MyButton>
+        <RowContainer>
+          <InputData
+            type="text"
+            placeholder="Pesquise materiais"
+            name="pesquisa"
+            value={textSearch}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+          <MyButton onClick={() => handleGetMaterials(textSearch)}>
+            {" "}
+            <FiSearch />{" "}
+          </MyButton>
+        </RowContainer>
+        {posts.map((post) => (
+          <MaterialElement
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            subtitle={post.subtitle}
+            created_at={post.created_at}
+            url={post.url}
+          />
+        ))}
       </Container>
-      {posts.map((post) => (
-        <MaterialElement
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          subtitle={post.subtitle}
-          created_at={post.created_at}
-          url={post.url}
-        />
-      ))}
     </>
   );
 }

@@ -17,7 +17,7 @@ const Overlay = styled.div`
 
 const DialogContent = styled.div`
   position: absolute;
-  padding: 2rem;
+  padding: 20px 30px 20px 30px;
   color: rgb(255, 255, 255);
   background: #202024;
   min-width: 16rem;
@@ -34,6 +34,12 @@ const DialogContent = styled.div`
   border: solid;
   border-color: #303030;
   border-width: 0.02rem;
+
+  @media screen and (max-width: 630px) {
+    min-width: 0;
+    padding: 10px 30px 10px 30px;
+    width: 230px !important;
+  }
 `;
 
 const ButtonContainer = styled.div`

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { Container, MyContainer } from "./ClassPage.Style";
-// import { ClassType } from "../../../types/collections";
 import { ClassType } from "../../../types/my_types";
 import { selectMaterials } from "../../controllers/SelectController";
 import ClassElement from "../../components/ClassElementComponent/ClassElement";
@@ -23,10 +22,8 @@ export default function ClassesPage() {
   }, [fetcher]);
 
   return (
-    <>
-      <Container>
-        <h1>Classes Page</h1>
-      </Container>
+    <Container>
+      <h1>Classes Page</h1>
       <MyContainer>
         {classes.map((turma) => (
           <ClassElement
@@ -38,6 +35,6 @@ export default function ClassesPage() {
           />
         ))}
       </MyContainer>
-    </>
+    </Container>
   );
 }

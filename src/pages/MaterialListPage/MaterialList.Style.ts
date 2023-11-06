@@ -1,5 +1,28 @@
 import styled from "styled-components";
 
+const Container = styled.div`
+  width: 100%;
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 490px) {
+    width: 290px;
+  }
+`;
+
+const RowContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  @media screen and (max-width: 490px) {
+    width: 290px;
+  }
+`;
+
 const InputData = styled.input`
   width: 100%;
   height: 1rem;
@@ -10,18 +33,6 @@ const InputData = styled.input`
   border: solid;
   border-color: #303030;
   border-width: 0.02rem;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  margin-bottom: 1rem;
-
-  @media screen and (max-width: 490px) {
-    width: 290px;
-  }
 `;
 
 const MyButton = styled.button`
@@ -45,4 +56,4 @@ const MyButton = styled.button`
   }
 `;
 
-export { InputData, Container, MyButton };
+export { InputData, RowContainer, Container, MyButton };

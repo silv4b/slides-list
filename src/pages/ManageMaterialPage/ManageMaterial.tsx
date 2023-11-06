@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { ReactNotifications } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 import {
   Container,
   ContainerRow,
@@ -6,8 +9,9 @@ import {
   Subtitle,
   InputData,
   MyButton,
+  ButtonContainer,
 } from "./ManageMaterial.Style";
-import Dialog from "../../components/DialogComponent/Dialog";
+import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
 import { Link } from "react-router-dom";
 import { MaterialType } from "../../../types/my_types";
 import { selectMaterial } from "../../controllers/SelectController";
@@ -34,6 +38,7 @@ export default function ManageMaterial() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormMaterial((prevData) => ({
+      // spread operator
       ...prevData,
       [name]: value,
     }));
@@ -63,9 +68,19 @@ export default function ManageMaterial() {
           url: formMaterial.url,
         }).then((result) => {
           if (result == true) {
-            alert(`Material Nº ${idToDelete} foi atualizado com sucesso!`);
+            ShowNotification({
+              title: "Notificação",
+              content: `Material Nº ${idToDelete} foi atualizado com sucesso!`,
+              time: 2000,
+              width: 400,
+            });
           } else {
-            alert(`Ocorreu algum erro!`);
+            ShowNotification({
+              title: "Notificação",
+              content: "Ocorreu algum erro!",
+              time: 2000,
+              width: 400,
+            });
           }
           setTextActionOnLeft("Adicionando Material");
           setTextActionOnRight("Removendo Material");
@@ -76,7 +91,12 @@ export default function ManageMaterial() {
         formMaterial.subtitle == "" ||
         formMaterial.url == ""
       ) {
-        alert("Erro ao inserir material no banco de dados.");
+        ShowNotification({
+          title: "Notificação",
+          content: "Erro ao inserir material no banco de dados.",
+          time: 2000,
+          width: 400,
+        });
       } else {
         insertMaterial("material", {
           title: formMaterial.title,
@@ -85,10 +105,20 @@ export default function ManageMaterial() {
         })
           .then((result) => {
             console.log(result);
-            alert(`Dados inseridos corretamente no banco de dados: ${result}`);
+            ShowNotification({
+              title: "Notificação",
+              content: `Dados inseridos corretamente no banco de dados: ${result}`,
+              time: 2000,
+              width: 400,
+            });
           })
           .catch((error) => {
-            alert(`Erro ao inserir dados no banco de dados: ${error.message}`);
+            ShowNotification({
+              title: "Notificação",
+              content: `Erro ao inserir dados no banco de dados: ${error.message}`,
+              time: 2000,
+              width: 400,
+            });
           });
       }
       handleClearForm();
@@ -97,17 +127,27 @@ export default function ManageMaterial() {
   };
 
   const handleEditData = async () => {
-    // openConfirmationDialog(() => {
     if (idToDelete == undefined) {
-      alert("Erro ao recuperar material do banco de dados!");
+      ShowNotification({
+        title: "Notificação",
+        content: "Erro ao recuperar material do banco de dados!",
+        time: 2000,
+        width: 400,
+      });
       handleClearForm();
     } else {
-      setTextActionOnLeft("Editando Material");
-      setTextActionOnRight("Editando Material");
       selectMaterial("material", idToDelete).then((result) => {
         if (result == undefined) {
-          alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
+          ShowNotification({
+            title: "Notificação",
+            content: `Material Nº ${idToDelete} não foi encontrado.`,
+            time: 2000,
+            width: 400,
+          });
         } else {
+          setTextActionOnLeft("Editando Material");
+          setTextActionOnRight("Editando Material");
+          setTextMainButton("Salvar");
           setFormMaterial({
             title: result.title,
             subtitle: result.subtitle,
@@ -116,21 +156,35 @@ export default function ManageMaterial() {
         }
       });
     }
-    setTextMainButton("Salvar");
-    // });
   };
 
   const handleRemoveData = async () => {
     openConfirmationDialog(() => {
       if (idToDelete == undefined) {
-        alert("Erro ao remover material do banco de dados: Campo(s) vazios!");
+        ShowNotification({
+          title: "Notificação",
+          content:
+            "Erro ao remover material do banco de dados: Campo(s) vazios!",
+          time: 4000,
+          width: 400,
+        });
         handleClearForm();
       } else {
         deleteMaterial("material", idToDelete).then((result) => {
           if (result == true) {
-            alert(`Material Nº ${idToDelete} foi removido com sucesso!`);
+            ShowNotification({
+              title: "Notificação",
+              content: `Material Nº ${idToDelete} foi removido com sucesso!`,
+              time: 2000,
+              width: 400,
+            });
           } else {
-            alert(`Material Nº ${idToDelete} não existe!`);
+            ShowNotification({
+              title: "Notificação",
+              content: `Material Nº ${idToDelete} não existe!`,
+              time: 2000,
+              width: 400,
+            });
           }
           handleClearForm();
         });
@@ -139,11 +193,16 @@ export default function ManageMaterial() {
   };
 
   const handleCancelOperation = () => {
-    // melhorar para aparecer apenas se algum dado tiver sido preenchido
     openConfirmationDialog(() => {
       setTextActionOnLeft("Adicionar");
       setTextActionOnRight("Remover");
       handleClearForm();
+      ShowNotification({
+        title: "Notificação",
+        content: "Operação cancelada.",
+        time: 2000,
+        width: 400,
+      });
     });
   };
 
@@ -156,10 +215,17 @@ export default function ManageMaterial() {
 
   const handleCancel = () => {
     setIsConfirmationVisible(false);
+    ShowNotification({
+      title: "Notificação",
+      content: "Operação cancelada.",
+      time: 2000,
+      width: 400,
+    });
   };
 
   return (
     <>
+      <ReactNotifications />
       <ContainerRow>
         <Container>
           <Title>
@@ -189,10 +255,10 @@ export default function ManageMaterial() {
             value={formMaterial.url}
             onChange={handleChange}
           />
-          <ContainerRow>
+          <ButtonContainer>
             <MyButton onClick={handleInsertData}>{textMainButton}</MyButton>
             <MyButton onClick={handleCancelOperation}>Cancelar</MyButton>
-          </ContainerRow>
+          </ButtonContainer>
         </Container>
 
         <Container>
@@ -207,14 +273,21 @@ export default function ManageMaterial() {
               setIdToDelete(parseInt(e.target.value) || undefined)
             }
           />
-          <ContainerRow>
+          <ButtonContainer>
             <MyButton onClick={handleEditData}>Editar</MyButton>
             <MyButton onClick={handleRemoveData}>Remover</MyButton>
-          </ContainerRow>
+          </ButtonContainer>
         </Container>
       </ContainerRow>
       {isConfirmationVisible && (
-        <Dialog onConfirm={handleConfirm} onCancel={handleCancel} />
+        <Dialog
+          isVisible={isConfirmationVisible}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+          message="Deseja confirmar esta ação?"
+          confirmText="Confirmar"
+          cancelText="Cancelar"
+        />
       )}
     </>
   );

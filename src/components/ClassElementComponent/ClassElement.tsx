@@ -12,8 +12,8 @@ interface IClassType {
   id: number;
   nome: string;
   codigo: number;
-  diario_url?: string;
-  gsa_url?: string;
+  diario_url: string;
+  gsa_url: string;
   created_at: string;
 }
 
