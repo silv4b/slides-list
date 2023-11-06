@@ -56,14 +56,12 @@ export default function MaterialList() {
             title: "Notificação",
             content: "Erro ao recuperar material!",
             time: 4000,
-            width: 400,
           });
         } else if (result.length == 0) {
           ShowNotification({
             title: "Notificação",
             content: "Nenhum material coincide com a pesquisa!",
             time: 4000,
-            width: 400,
           });
         } else {
           setPost(result);

@@ -26,11 +26,15 @@ export default function ManageMaterial() {
     url: "",
   });
 
-  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const [idToDelete, setIdToDelete] = useState<number | undefined>(undefined);
   const [textMainButton, setTextMainButton] = useState("Adicionar");
   const [textActionOnRight, setTextActionOnRight] = useState("Remover");
   const [textActionOnLeft, setTextActionOnLeft] = useState("Adicionar");
+  /*
+  State para definir se o dialog é exibido ou não e
+  state para guardar a função a ser executada no confirmar do dialog
+  */
+  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const [confirmFunction, setConfirmFunction] = useState<(() => void) | null>(
     null
   );
@@ -53,14 +57,18 @@ export default function ManageMaterial() {
     setIdToDelete(undefined);
   };
 
+  /*
+  Recebe uma função para ser executada caso o continuar seja clicado.
+  Dessa forma qualquer handler é usado normalmente e ele fica responsável pela chamada do dialog.
+  */
   const openConfirmationDialog = (confirmAction: () => void) => {
     setConfirmFunction(() => confirmAction);
     setIsConfirmationVisible(true);
   };
 
   const handleInsertData = async () => {
+    // Lógica a ser executada quando o usuário confirma
     openConfirmationDialog(() => {
-      // Lógica a ser executada quando o usuário confirma
       if (idToDelete != undefined) {
         updateMaterial("material", idToDelete, {
           title: formMaterial.title,
@@ -71,15 +79,13 @@ export default function ManageMaterial() {
             ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} foi atualizado com sucesso!`,
-              time: 2000,
-              width: 400,
+              time: 4000,
             });
           } else {
             ShowNotification({
               title: "Notificação",
               content: "Ocorreu algum erro!",
-              time: 2000,
-              width: 400,
+              time: 4000,
             });
           }
           setTextActionOnLeft("Adicionando Material");
@@ -94,8 +100,7 @@ export default function ManageMaterial() {
         ShowNotification({
           title: "Notificação",
           content: "Erro ao inserir material no banco de dados.",
-          time: 2000,
-          width: 400,
+          time: 4000,
         });
       } else {
         insertMaterial("material", {
@@ -108,16 +113,14 @@ export default function ManageMaterial() {
             ShowNotification({
               title: "Notificação",
               content: `Dados inseridos corretamente no banco de dados: ${result}`,
-              time: 2000,
-              width: 400,
+              time: 4000,
             });
           })
           .catch((error) => {
             ShowNotification({
               title: "Notificação",
               content: `Erro ao inserir dados no banco de dados: ${error.message}`,
-              time: 2000,
-              width: 400,
+              time: 4000,
             });
           });
       }
@@ -131,8 +134,7 @@ export default function ManageMaterial() {
       ShowNotification({
         title: "Notificação",
         content: "Erro ao recuperar material do banco de dados!",
-        time: 2000,
-        width: 400,
+        time: 4000,
       });
       handleClearForm();
     } else {
@@ -141,8 +143,7 @@ export default function ManageMaterial() {
           ShowNotification({
             title: "Notificação",
             content: `Material Nº ${idToDelete} não foi encontrado.`,
-            time: 2000,
-            width: 400,
+            time: 4000,
           });
         } else {
           setTextActionOnLeft("Editando Material");
@@ -166,7 +167,6 @@ export default function ManageMaterial() {
           content:
             "Erro ao remover material do banco de dados: Campo(s) vazios!",
           time: 4000,
-          width: 400,
         });
         handleClearForm();
       } else {
@@ -175,15 +175,13 @@ export default function ManageMaterial() {
             ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} foi removido com sucesso!`,
-              time: 2000,
-              width: 400,
+              time: 4000,
             });
           } else {
             ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} não existe!`,
-              time: 2000,
-              width: 400,
+              time: 4000,
             });
           }
           handleClearForm();
@@ -200,12 +198,12 @@ export default function ManageMaterial() {
       ShowNotification({
         title: "Notificação",
         content: "Operação cancelada.",
-        time: 2000,
-        width: 400,
+        time: 4000,
       });
     });
   };
 
+  /* Handler que seta a função que vai ser executada quando o usuário clicar em continuar */
   const handleConfirm = () => {
     if (confirmFunction) {
       confirmFunction();
@@ -218,8 +216,7 @@ export default function ManageMaterial() {
     ShowNotification({
       title: "Notificação",
       content: "Operação cancelada.",
-      time: 2000,
-      width: 400,
+      time: 4000,
     });
   };
 

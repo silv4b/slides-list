@@ -4,16 +4,10 @@ import NotificationComponent from "../components/NotificationComponent/Notificat
 interface INotification {
   title: string;
   content: string;
-  width: number;
   time: number;
 }
 
-export const ShowNotification = ({
-  title,
-  content,
-  time,
-  width,
-}: INotification) => {
+export const ShowNotification = ({ title, content, time }: INotification) => {
   Store.addNotification({
     content: NotificationComponent({
       title: title,
@@ -26,6 +20,5 @@ export const ShowNotification = ({
     dismiss: {
       duration: time,
     },
-    width: width,
   });
 };
