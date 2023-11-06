@@ -7,27 +7,32 @@ import {
 } from "./ConfirmationDialog.Style";
 
 interface IConfirmationDialog {
+  isVisible: boolean;
+  message: string;
+  confirmText: string;
+  cancelText: string;
   onConfirm: () => void;
   onCancel: () => void;
 }
 
-export default function Dialog({ onConfirm, onCancel }: IConfirmationDialog) {
-  const handleConfirm = () => {
-    onConfirm();
-  };
-
-  const handleCancel = () => {
-    onCancel();
-  };
+export default function Dialog({
+  isVisible,
+  message,
+  confirmText,
+  cancelText,
+  onConfirm,
+  onCancel,
+}: IConfirmationDialog) {
+  if (!isVisible) return null;
 
   return (
     <>
       <Overlay />
       <DialogContent>
-        <p>Tem certeza de que deseja continuar?</p>
+        <p>{message}</p>
         <ButtonContainer>
-          <MyButtonLink onClick={handleCancel}>Cancelar</MyButtonLink>
-          <MyButton onClick={handleConfirm}>Continuar</MyButton>
+          <MyButtonLink onClick={onCancel}>{cancelText}</MyButtonLink>
+          <MyButton onClick={onConfirm}>{confirmText}</MyButton>
         </ButtonContainer>
       </DialogContent>
     </>

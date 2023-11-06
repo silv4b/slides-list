@@ -280,7 +280,14 @@ export default function ManageMaterial() {
         </Container>
       </ContainerRow>
       {isConfirmationVisible && (
-        <Dialog onConfirm={handleConfirm} onCancel={handleCancel} />
+        <Dialog
+          isVisible={isConfirmationVisible}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+          message="Deseja confirmar esta ação?"
+          confirmText="Confirmar"
+          cancelText="Cancelar"
+        />
       )}
     </>
   );
