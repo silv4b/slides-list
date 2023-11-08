@@ -272,7 +272,7 @@ export default function ManageMaterial() {
             }
           />
           <ButtonContainer>
-            <MyButton onClick={handleEditData}>Editar</MyButton>
+            <MyButton onClick={handleEditData}>Buscar</MyButton>
             <MyButton onClick={handleRemoveData}>Remover</MyButton>
           </ButtonContainer>
         </Container>
