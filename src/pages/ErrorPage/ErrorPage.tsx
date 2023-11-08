@@ -1,11 +1,12 @@
-import { Container, Title, Subtitle } from "./ErrorPage.Style";
 import { Link } from "react-router-dom";
+import { Container, Title, Subtitle } from "./ErrorPage.Style";
 
 export default function ErrorPage() {
   return (
     <Container>
       <Title>
-        Erro<Link to="/">.</Link>
+        Erro
+        {/* <Link to="/">.</Link> */}
       </Title>
       <Subtitle>
         O caminho não existe ou não está disponível. Volte{" "}

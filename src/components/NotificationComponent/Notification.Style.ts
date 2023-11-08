@@ -12,12 +12,14 @@ const Container = styled.div`
 
 const Title = styled.p`
   padding: 0 20px 0 20px;
+  margin: 6px 0 6px 0;
+  font-size: small;
+  color: gray;
 `;
 
 const Content = styled.p`
   padding: 0 20px 0 20px;
   margin: 10px 0 10px 0;
-  font-size: large;
 `;
 
 export { Container, Title, Content };

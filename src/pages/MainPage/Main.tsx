@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import MaterialList from "../MaterialListPage/MaterialList";
-import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 import ScrollUpButton from "../../components/ScrollUpButtonComponent/ScrollUpButton";
+import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 
 export default function Main() {
   return (
@@ -10,7 +9,8 @@ export default function Main() {
       {/* <FloatingButton /> */}
       <ScrollUpButton />
       <Title>
-        Posts - Materiais<Link to="/management">.</Link>
+        Posts - Materiais
+        {/* <Link to="/management">.</Link> */}
       </Title>
       <Subtitle>
         Materiais usados nas disciplinas de PEOO e Algoritmos.
@@ -20,7 +20,7 @@ export default function Main() {
         <MyLink href="https://github.com/silv4bprof" target="_blank">
           Exemplos{" "}
         </MyLink>
-        no Github.{" "}
+        no Github.
       </div>
     </Container>
   );

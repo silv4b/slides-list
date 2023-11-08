@@ -21,7 +21,6 @@ const Subtitle = styled.h3`
   @media screen and (max-width: 490px) {
     display: flex;
     justify-content: center;
-    width: 290px;
   }
 `;
 

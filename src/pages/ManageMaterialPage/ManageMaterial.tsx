@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { useState } from "react";
 import { ReactNotifications } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css";
+import "react-notifications-component/dist/theme.css"; // alterar o componente para remover esse tema
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
 import {
   Container,
   ContainerRow,
@@ -11,8 +12,6 @@ import {
   MyButton,
   ButtonContainer,
 } from "./ManageMaterial.Style";
-import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
-import { Link } from "react-router-dom";
 import { MaterialType } from "../../../types/my_types";
 import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
@@ -227,7 +226,7 @@ export default function ManageMaterial() {
         <Container>
           <Title>
             {textActionOnLeft}
-            <Link to="/">.</Link>
+            {/* <Link to="/">.</Link> */}
           </Title>
           <Subtitle>Dados do Material</Subtitle>
 

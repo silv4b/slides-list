@@ -1,19 +1,19 @@
-import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
-import { PostType } from "../../../types/collections";
 import { useState, useCallback, useEffect } from "react";
-import {
-  selectMaterials,
-  selectMaterialByText,
-} from "../../controllers/SelectController";
+import { ReactNotifications } from "react-notifications-component";
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
+import { FiSearch } from "react-icons/fi";
 import {
   InputData,
   RowContainer,
   Container,
   MyButton,
 } from "./MaterialList.Style";
-import { FiSearch } from "react-icons/fi";
-import { ReactNotifications } from "react-notifications-component";
-import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { PostType } from "../../../types/collections";
+import {
+  selectMaterials,
+  selectMaterialByText,
+} from "../../controllers/SelectController";
 
 export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
@@ -84,8 +84,7 @@ export default function MaterialList() {
             onKeyDown={handleKeyDown}
           />
           <MyButton onClick={() => handleGetMaterials(textSearch)}>
-            {" "}
-            <FiSearch />{" "}
+            <FiSearch />
           </MyButton>
         </RowContainer>
         {posts.map((post) => (

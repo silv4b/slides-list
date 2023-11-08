@@ -5,21 +5,18 @@ const Container = styled.div`
   max-width: 28rem;
   display: flex;
   flex-direction: column;
-
-  @media screen and (max-width: 490px) {
-    width: 290px;
-  }
 `;
 
 const RowContainer = styled.div`
-  width: 100%;
+  width: 450px;
   display: flex;
   flex-direction: row;
   gap: 1rem;
   margin-bottom: 1rem;
 
   @media screen and (max-width: 490px) {
-    width: 290px;
+    width: auto;
+    margin: 0.4rem 0.6rem 0.4rem 0.6rem;
   }
 `;
 

@@ -1,6 +1,6 @@
+import { useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { MyScrollUpButton } from "./ScrollUpButton.Style";
-import { useState } from "react";
 
 export default function ScrollUpButton() {
   const [scrollStatus, setScrollStatus] = useState<"down" | "up">("up");

@@ -1,3 +1,5 @@
+import { SiGoogleclassroom, SiSanic } from "react-icons/si";
+import { BsArrowRightCircle } from "react-icons/bs";
 import {
   Container,
   ButtonContainer,
@@ -5,8 +7,6 @@ import {
   Title,
   ClassCode,
 } from "./ClassElement.Style";
-import { SiGoogleclassroom, SiSanic } from "react-icons/si";
-import { BsArrowRightCircle } from "react-icons/bs";
 
 interface IClassType {
   id: number;

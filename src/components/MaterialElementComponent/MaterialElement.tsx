@@ -1,3 +1,4 @@
+import { format, zonedTimeToUtc } from "date-fns-tz";
 import {
   MaterialContainer,
   Material,
@@ -6,8 +7,6 @@ import {
   CreatedAt,
   MaterialContent,
 } from "./MaterialElement.Style";
-
-import { format, zonedTimeToUtc } from "date-fns-tz";
 
 interface IMaterialElement {
   id: number;
