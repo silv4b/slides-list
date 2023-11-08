@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { ReactNotifications } from "react-notifications-component";
 import { ShowNotification } from "../../Utils/ShowNotificationUtil";
 import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
+import Navbar from "../../components/NavbarComponent/Navbar";
 import { FiSearch } from "react-icons/fi";
 import {
   InputData,
@@ -72,6 +73,7 @@ export default function MaterialList() {
 
   return (
     <>
+      <Navbar />
       <ReactNotifications />
       <Container>
         <RowContainer>
