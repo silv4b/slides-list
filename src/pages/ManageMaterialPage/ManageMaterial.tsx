@@ -3,6 +3,7 @@ import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css"; // alterar o componente para remover esse tema
 import { ShowNotification } from "../../Utils/ShowNotificationUtil";
 import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
+import Navbar from "../../components/NavbarComponent/Navbar";
 import {
   Container,
   ContainerRow,
@@ -221,6 +222,7 @@ export default function ManageMaterial() {
 
   return (
     <>
+      <Navbar />
       <ReactNotifications />
       <ContainerRow>
         <Container>
@@ -270,7 +272,7 @@ export default function ManageMaterial() {
             }
           />
           <ButtonContainer>
-            <MyButton onClick={handleEditData}>Editar</MyButton>
+            <MyButton onClick={handleEditData}>Buscar</MyButton>
             <MyButton onClick={handleRemoveData}>Remover</MyButton>
           </ButtonContainer>
         </Container>

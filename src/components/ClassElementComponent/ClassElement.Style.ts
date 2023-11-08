@@ -27,6 +27,12 @@ const Container = styled.div`
     background-color: #fff;
     color: #202024;
   }
+
+  @media screen and (max-width: 630px) {
+    min-width: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
 `;
 
 const ButtonContainer = styled.div`

@@ -16,7 +16,7 @@ const ContainerRow = styled.div`
 
   @media screen and (max-width: 630px) {
     gap: 0;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 `;
 

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   margin-bottom: 2rem;
   align-items: center;
 `;
