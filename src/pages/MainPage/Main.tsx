@@ -1,12 +1,12 @@
 import MaterialList from "../MaterialListPage/MaterialList";
 import ScrollUpButton from "../../components/ScrollUpButtonComponent/ScrollUpButton";
-// import Navbar from "../../components/NavbarComponent/Navbar";
+import Navbar from "../../components/NavbarComponent/Navbar";
 import { Container, Title, Subtitle, MyLink } from "./Main.Style";
 
 export default function Main() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Container>
         {/* Aplicar depois da implementação do Auth */}
         {/* <FloatingButton /> */}
