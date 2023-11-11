@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import colors from "../../Themes/colors";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_24};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 `;
 

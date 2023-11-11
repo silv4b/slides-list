@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../Themes/colors";
 
 const Container = styled.div`
   width: 100%;
@@ -25,10 +26,10 @@ const InputData = styled.input`
   height: 1rem;
   padding: 1em;
   margin: 0.5em 0 0.5em 0;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 `;
 
@@ -40,16 +41,16 @@ const MyButton = styled.button`
   margin: 0.5em 0 0.5em 0;
   transition: 0.2s ease-in-out;
   cursor: pointer;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 
   &:hover {
-    transform: scale(1.04);
-    background-color: #fff;
-    color: black;
+    transform: scale(1.01);
+    background-color: ${colors.white};
+    color: ${colors.black};
   }
 `;
 

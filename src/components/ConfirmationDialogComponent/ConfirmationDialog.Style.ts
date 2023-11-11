@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import colors from "../../Themes/colors";
 
 const Overlay = styled.div`
   transition: 0.9s ease-in-out;
   position: fixed;
-  z-index: 999999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: ${colors.box_shadow};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,21 +18,20 @@ const Overlay = styled.div`
 const DialogContent = styled.div`
   position: absolute;
   padding: 20px 30px 20px 30px;
-  color: rgb(255, 255, 255);
-  background: #202024;
+  color: ${colors.white};
+  background: ${colors.background_color};
   min-width: 16rem;
   border-radius: 8px;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 30px 0 ${colors.box_shadow};
   overflow: auto;
   transition: 0.9s ease-in-out;
   left: 50%;
   top: 456px;
   transform: translate(-50%, -50%);
   z-index: 11 !important;
-  background-color: #111114;
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 
   @media screen and (max-width: 630px) {
@@ -59,15 +58,15 @@ const MyButton = styled.button`
   margin: 0.5em 0 0.5em 0;
   transition: 0.2s ease-in-out;
   cursor: pointer;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 
   &:hover {
-    transform: scale(1.04);
-    background-color: #fff;
+    transform: scale(1.01);
+    background-color: ${colors.white};
     color: black;
   }
 `;

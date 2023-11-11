@@ -171,7 +171,7 @@ export default function ManageMaterial() {
         handleClearForm();
       } else {
         deleteMaterial("material", idToDelete).then((result) => {
-          if (result == true) {
+          if (result) {
             ShowNotification({
               title: "Notificação",
               content: `Material Nº ${idToDelete} foi removido com sucesso!`,
@@ -226,10 +226,7 @@ export default function ManageMaterial() {
       <ReactNotifications />
       <ContainerRow>
         <Container>
-          <Title>
-            {textActionOnLeft}
-            {/* <Link to="/">.</Link> */}
-          </Title>
+          <Title>{textActionOnLeft}</Title>
           <Subtitle>Dados do Material</Subtitle>
 
           <InputData

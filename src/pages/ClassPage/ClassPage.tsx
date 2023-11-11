@@ -1,21 +1,25 @@
 import { useCallback, useEffect, useState } from "react";
 import ClassElement from "../../components/ClassElementComponent/ClassElement";
 import Navbar from "../../components/NavbarComponent/Navbar";
-import { Container, MyContainer } from "./ClassPage.Style";
+import { Container, Title, MyContainer } from "./ClassPage.Style";
 import { ClassType } from "../../../types/my_types";
 import { selectMaterials } from "../../controllers/SelectController";
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
 
 export default function ClassesPage() {
   const [classes, setClasses] = useState<ClassType[]>([]);
   const fetcher = useCallback(async () => {
-    selectMaterials("turmas", "id").then((result) => {
-      if (result == "error") {
-        alert(`Erro ao recuperar turmas!`);
-        console.error(result);
-      } else {
+    selectMaterials("turmas", "id")
+      .then((result) => {
         setClasses(result);
-      }
-    });
+      })
+      .catch((result) => {
+        ShowNotification({
+          title: "Notificação",
+          content: result.message,
+          time: 4000,
+        });
+      });
   }, []);
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export default function ClassesPage() {
     <>
       <Navbar />
       <Container>
-        <h1>Classes Page</h1>
+        <Title>Classes Page</Title>
         <MyContainer>
           {classes.map((turma) => (
             <ClassElement

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../Themes/colors";
 
 const LeftButtons = styled.div`
   display: flex;
@@ -11,9 +12,10 @@ const LeftButtons = styled.div`
     border-radius: 4px;
     border-width: 0.02rem;
     transition: 0.2s ease-in-out;
+    color: ${colors.gray_8b};
 
     &:hover {
-      color: #fff;
+      color: ${colors.white};
     }
   }
 `;
@@ -28,13 +30,13 @@ const Container = styled.div`
   display: flex;
   justify-content: space-around;
   height: 40px;
-  background-color: #111114;
+  background-color: ${colors.background_color};
   overflow: hidden;
   position: fixed; /* Mantém a navbar no topo da página */
   top: 0;
   width: 100%;
   padding: 1rem 0 1rem 0;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 30px 0 ${colors.box_shadow};
 
   @media screen and (max-width: 375px) {
     > ${RightButtons} {

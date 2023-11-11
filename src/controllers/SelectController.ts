@@ -20,7 +20,7 @@ const selectMaterials = async (tableName: string, orderBy: string) => {
     .select("*")
     .order(orderBy, { ascending: true });
   if (error) {
-    return "error";
+    throw new Error("Erro ao recuperar dados!");
   } else {
     return data;
   }
@@ -31,22 +31,22 @@ const selectMaterialByText = async (
   tableName: string,
   columnName: string,
   searchBy: string,
-  orderBy?: string
+  orderBy: string = "id"
 ) => {
-  // se orderBy não foi repassado, por padrão, recebe "id"
-  if (!orderBy) {
-    orderBy = "id"
-  }
-  const { error, data } = await supabase
+  const { error, data, count } = await supabase
     .from(tableName)
-    .select("*")
+    .select("*", { count: "exact" })
     .order(orderBy, { ascending: true })
     .textSearch(columnName, searchBy, {
       type: "websearch",
       config: "english",
     });
   if (error) {
-    return "error";
+    // throw error; or
+    throw new Error(`${error}`);
+  } else if (count == null || count == 0) {
+    // ajeitar para validar o count na desestruturação
+    throw new Error("Não existe retorno para o valor pesquisado!");
   } else {
     return data;
   }

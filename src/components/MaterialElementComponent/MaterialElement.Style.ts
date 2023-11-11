@@ -1,20 +1,20 @@
 import styled from "styled-components";
+import colors from "../../Themes/colors";
 
 const MaterialContainer = styled.div`
-  background-color: #2d2d2d;
   width: 100%;
   cursor: pointer;
   margin-bottom: 1rem;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
   transition: 0.2s ease-in-out;
 
   &:hover {
-    transform: scale(1.03);
-    background-color: #fff;
+    transform: scale(1.01);
+    background-color: ${colors.white};
   }
 
   @media screen and (max-width: 490px) {
@@ -32,7 +32,7 @@ const Material = styled.div`
 
   &:hover {
     &:nth-child(1) > :first-child > :first-child {
-      color: #242424;
+      color: ${colors.dark_gray_24};
       font-weight: 500;
     }
 
@@ -58,21 +58,21 @@ const MaterialContent = styled.div`
 
 const Title = styled.p`
   text-align: left;
-  color: white;
+  color: ${colors.white};
   margin: 0;
 `;
 
 const Subtitle = styled.p`
   font-size: 0.8rem;
   text-align: left;
-  color: #8b8b8d;
+  color: ${colors.gray_8b};
   margin: 0;
   padding-right: 1rem;
 `;
 
 const CreatedAt = styled.p`
   font-size: 0.8rem;
-  color: #8b8b8d;
+  color: ${colors.gray_8b};
 `;
 
 export {
