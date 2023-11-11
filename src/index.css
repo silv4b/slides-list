@@ -1,5 +1,5 @@
 :root {
-    margin-top: 4rem;   
+    margin-top: 4rem;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -42,4 +42,24 @@ body {
     flex-direction: column;
     width: 280px;
     min-width: auto;
+}
+
+/* scroll bar setup */
+
+/* scroll bar width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* scroll bar background */
+::-webkit-scrollbar-track {
+    background: #111114;
+    padding: 5px !important;
+}
+
+/* scroll bar handler */
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px !important;
+    margin-right: 5px !important;
 }

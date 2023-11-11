@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const Title = styled.h2`
-  margin: 0;
+  margin-top: 1rem;
 `;
 
 const Subtitle = styled.h3`

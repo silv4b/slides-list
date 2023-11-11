@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import colors from "../../Themes/colors";
 
 // mais seguro usar o partial para passagem de parâmetros opcionais
 interface MyButtonProps {
@@ -13,19 +14,19 @@ const Container = styled.div`
   min-width: 290px;
   max-width: 360px !important;
   margin: 0.6rem;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   padding: 0.8rem;
   max-width: 40rem;
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
   transition: 0.2s ease-in-out;
 
   &:hover {
-    transform: scale(1.03);
-    background-color: #fff;
-    color: #202024;
+    transform: scale(1.01);
+    background-color: ${colors.white};
+    color: ${colors.dark_gray_24};
   }
 
   @media screen and (max-width: 630px) {
@@ -58,8 +59,6 @@ const MyButton = styled.div<Partial<MyButtonProps>>`
   &:hover {
     background-color: ${(props) => props.hoverColor};
   }
-
-  /* colocar um hover depois */
 `;
 
 const Title = styled.h3`

@@ -20,14 +20,17 @@ export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
   const [posts, setPost] = useState<PostType[]>([]);
   const fetcher = useCallback(async () => {
-    selectMaterials("material", "id").then((result) => {
-      if (result == "error") {
-        alert(`Erro ao recuperar material!`);
-        console.error(result);
-      } else {
+    selectMaterials("material", "id")
+      .then((result) => {
         setPost(result);
-      }
-    });
+      })
+      .catch(() => {
+        ShowNotification({
+          title: "Notificação",
+          content: `Erro ao recuperar materiais.`,
+          time: 4000,
+        });
+      });
   }, []);
 
   useEffect(() => {
@@ -51,23 +54,17 @@ export default function MaterialList() {
     if (textSearch == "") {
       fetcher();
     } else {
-      selectMaterialByText("material", "title", textSearch).then((result) => {
-        if (result == "error") {
-          ShowNotification({
-            title: "Notificação",
-            content: "Erro ao recuperar material!",
-            time: 4000,
-          });
-        } else if (result.length == 0) {
-          ShowNotification({
-            title: "Notificação",
-            content: "Nenhum material coincide com a pesquisa!",
-            time: 4000,
-          });
-        } else {
+      selectMaterialByText("material", "title", textSearch)
+        .then((result) => {
           setPost(result);
-        }
-      });
+        })
+        .catch((error) => {
+          ShowNotification({
+            title: "Notificação",
+            content: `${error.message}`,
+            time: 4000,
+          });
+        });
     }
   };
 

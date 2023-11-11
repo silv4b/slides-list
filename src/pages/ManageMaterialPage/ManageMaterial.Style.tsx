@@ -1,10 +1,5 @@
 import styled from "styled-components";
-
-const Place = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: grey;
-`;
+import colors from "../../Themes/colors";
 
 const ContainerRow = styled.div`
   display: flex;
@@ -26,8 +21,6 @@ const Container = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   align-items: center;
-
-  /* background-color: red; */
 `;
 
 const Title = styled.h2`
@@ -36,7 +29,7 @@ const Title = styled.h2`
 
 const Subtitle = styled.h3`
   margin: 1rem;
-  color: gray;
+  color: ${colors.gray_8b};
   font-weight: 400;
 `;
 
@@ -45,10 +38,10 @@ const InputData = styled.input`
   height: 1rem;
   padding: 1em;
   margin: 0.5em 0 0.5em 0;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 `;
 
@@ -77,16 +70,16 @@ const MyButton = styled.button`
   margin: 0.5em 0 0.5em 0;
   transition: 0.2s ease-in-out;
   cursor: pointer;
-  background-color: #202024;
+  background-color: ${colors.dark_gray_20};
   border-radius: 4px;
   border: solid;
-  border-color: #303030;
+  border-color: ${colors.border_color};
   border-width: 0.02rem;
 
   &:hover {
-    transform: scale(1.04);
-    background-color: #fff;
-    color: black;
+    transform: scale(1.01);
+    background-color: ${colors.white};
+    color: ${colors.black};
   }
 
   @media screen and (max-width: 630px) {
@@ -94,16 +87,12 @@ const MyButton = styled.button`
   }
 `;
 
-const Link = styled.a``;
-
 export {
   Container,
   Title,
   Subtitle,
-  Link,
   InputData,
   MyButton,
   ContainerRow,
-  Place,
   ButtonContainer,
 };
