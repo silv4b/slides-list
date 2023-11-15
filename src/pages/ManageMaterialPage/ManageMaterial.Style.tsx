@@ -29,7 +29,7 @@ const Title = styled.h2`
 
 const Subtitle = styled.h3`
   margin: 1rem;
-  color: ${colors.gray_8b};
+  color: ${colors.soft_gray_80};
   font-weight: 400;
 `;
 

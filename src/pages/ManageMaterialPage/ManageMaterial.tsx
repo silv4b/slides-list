@@ -220,6 +220,13 @@ export default function ManageMaterial() {
     });
   };
 
+  const handleKeydown = (e: React.KeyboardEvent) => {
+    if (e.key == "Enter") {
+      handleEditData();
+    } else if (e.key == "Escape") {
+      handleClearForm();
+    }
+  };
   return (
     <>
       <Navbar />
@@ -267,6 +274,7 @@ export default function ManageMaterial() {
             onChange={(e) =>
               setIdToDelete(parseInt(e.target.value) || undefined)
             }
+            onKeyDown={handleKeydown}
           />
           <ButtonContainer>
             <MyButton onClick={handleEditData}>Buscar</MyButton>

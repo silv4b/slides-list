@@ -65,14 +65,14 @@ const Title = styled.p`
 const Subtitle = styled.p`
   font-size: 0.8rem;
   text-align: left;
-  color: ${colors.gray_8b};
+  color: ${colors.soft_gray_80};
   margin: 0;
   padding-right: 1rem;
 `;
 
 const CreatedAt = styled.p`
   font-size: 0.8rem;
-  color: ${colors.gray_8b};
+  color: ${colors.soft_gray_80};
 `;
 
 export {

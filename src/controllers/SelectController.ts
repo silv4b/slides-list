@@ -1,5 +1,7 @@
 import supabase from "../../lib/supabase-client";
 
+/* Mudar o nome das funções para ficar mais genérico. */
+
 // seleciona um material pelo id
 const selectMaterial = async (tableName: string, idToGetData: number) => {
   const { error, data } = await supabase
@@ -52,4 +54,31 @@ const selectMaterialByText = async (
   }
 };
 
-export { selectMaterial, selectMaterials, selectMaterialByText };
+/* Rever a necessidade desse recuperar
+e verificar ser da pra diminuir a quantidade. */
+/*
+  // tables: string[],
+  // firstTable: string, // tabela foco, de onde serão recuperado os dados.
+  // secondoTable: string, // tabela que vais er usada para o 'on' do join().
+  // searchBy: number,
+  // orderBy: string = "id"
+*/
+const selectMaterialByCourseId = async (idTurma: number) => {
+  const { error, data } = await supabase
+    .from("material_turma")
+    .select("*")
+    .eq("id_turma", idTurma);
+  if (error) {
+    throw new Error(`${error}`);
+  } else {
+    console.log(data);
+    return data;
+  }
+};
+
+export {
+  selectMaterial,
+  selectMaterials,
+  selectMaterialByText,
+  selectMaterialByCourseId,
+};

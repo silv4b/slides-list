@@ -65,8 +65,8 @@ const Title = styled.h3`
   height: 3.4rem;
 `;
 
-const ClassCode = styled.p`
+const CourseCode = styled.p`
   margin: 0;
 `;
 
-export { Container, MyButton, ButtonContainer, Title, ClassCode };
+export { Container, MyButton, ButtonContainer, Title, CourseCode };
