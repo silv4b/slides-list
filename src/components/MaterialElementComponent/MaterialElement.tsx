@@ -27,9 +27,13 @@ export default function MaterialElement({
   const dataUTC = zonedTimeToUtc(dataOriginal, "UTC");
   const dataFormatada: string = format(dataUTC, "dd/MM/yyyy");
 
+  const handleOpenNewTab = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <MaterialContainer>
-      <Material onClick={() => window.open(url, "_blank")}>
+      <Material onClick={() => handleOpenNewTab(url!)}>
         <MaterialContent>
           <Title>{title}</Title>
           <Subtitle>

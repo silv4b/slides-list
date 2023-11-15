@@ -1,26 +1,55 @@
+import { useCallback, useEffect, useState } from "react";
 import Navbar from "../../components/NavbarComponent/Navbar";
 import { selectMaterialByCourseId } from "../../controllers/SelectController";
-import { Container } from "./CoursePage.Style";
+import { Container, Title } from "./CoursePage.Style";
 import { useLocation } from "react-router-dom";
+import { PostType } from "../../../types/collections";
+import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
 
 export default function CoursePage() {
   const location = useLocation();
   const courseData = location.state;
+  const [materials, setMaterials] = useState<PostType[]>([]);
 
-  const handleClick = () => {
-    console.log(courseData);
-    selectMaterialByCourseId(courseData.id);
-  };
+  const fetcher = useCallback(async () => {
+    selectMaterialByCourseId(courseData.id)
+      .then((result) => {
+        setMaterials(result);
+      })
+      .catch(() => {
+        ShowNotification({
+          title: "Notificação",
+          content: `Erro ao recuperar materiais.`,
+          time: 4000,
+        });
+      });
+  }, [courseData.id]);
+
+  useEffect(() => {
+    fetcher();
+  }, [fetcher]);
 
   return (
     <>
       <Navbar />
       <Container>
-        <h1> Course Page</h1>
+        <Title> Course Page</Title>
         <h3>
-          {courseData.id} - {courseData.nome}
+          {courseData.codigo} - {courseData.nome}
         </h3>
-        <button onClick={handleClick}>Consulte</button>
+        {/* <MaterialContainer> */}
+        {materials.map((material) => (
+          <MaterialElement
+            key={material.id}
+            id={material.id}
+            title={material.title}
+            subtitle={material.subtitle}
+            created_at={material.created_at}
+            url={material.url}
+          />
+        ))}
+        {/* </MaterialContainer> */}
       </Container>
     </>
   );

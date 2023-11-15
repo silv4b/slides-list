@@ -3,6 +3,7 @@ import colors from "../../Themes/colors";
 
 const MaterialContainer = styled.div`
   width: 100%;
+  max-width: 450px;
   cursor: pointer;
   margin-bottom: 1rem;
   background-color: ${colors.dark_gray_20};
