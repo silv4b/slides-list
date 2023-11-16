@@ -36,9 +36,8 @@ const router = createBrowserRouter([
     element: <CoursesPage />,
     errorElement: <ErrorPage />,
   },
-  // Manage Course (individual)
   {
-    path: "/course",
+    path: "/courses/:courseCod", // Use :courseCod para capturar o identificador da URL
     element: <CoursePage />,
     errorElement: <ErrorPage />,
   },

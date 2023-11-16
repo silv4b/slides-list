@@ -27,12 +27,10 @@ export default function CourseElement({
   diario_url,
 }: Partial<ICourseType>) {
   const navigate = useNavigate();
-  const handleClick = (id: number, codigo: number, nome: string) => {
+  const handleClick = (codigo: number) => {
     /* Navegando para a pagina de disciplinas (Course)
     passando o código da mesma como parâmetro .*/
-    const dataToPass = { id: id, codigo: codigo, nome: nome };
-    // console.log(dataToPass);
-    navigate("/course", { state: dataToPass });
+    navigate(`/courses/${codigo}`);
   };
 
   const handleNewTab = (url: string) => {
@@ -61,7 +59,7 @@ export default function CourseElement({
           <MyButton onClick={() => handleNewTab(diario_url!)}>
             <SiSanic />
           </MyButton>
-          <MyButton onClick={() => handleClick(id!, codigo!, nome!)}>
+          <MyButton onClick={() => handleClick(codigo!)}>
             <BsArrowRightCircle />
           </MyButton>
         </ButtonContainer>

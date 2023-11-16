@@ -53,6 +53,24 @@ const selectMaterialByText = async (
   }
 };
 
+const getCourseIdByCode = async (codigoTurma: number) => {
+  try {
+    const { data } = await supabase
+      .from("turmas")
+      .select("id")
+      .eq("codigo", codigoTurma);
+    const courseId = data?.[0]?.id as number;
+    if (typeof courseId === "number") {
+      return courseId;
+    } else {
+      // Pode retornar um valor padrão, lançar um erro ou fazer qualquer outra coisa
+      throw new Error("Curso não encontrado");
+    }
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
 /* Rever a necessidade desse recuperar
 e verificar ser da pra diminuir a quantidade. */
 // Função para obter IDs de materiais associados a uma turma
@@ -89,11 +107,8 @@ const getDetalhesMateriaisPorIds = async (idsMateriais: number[]) => {
   }
 };
 
-const selectMaterialByCourseId = async (idTurma: number) => {
-  /*const detalhesMateriais = await getDetalhesMateriaisPorIds(
-    await getMaterialIdsPorTurma(idTurma)
-  );
-  console.log(`detalhes finais: ${detalhesMateriais}`);*/
+const selectMaterialByCourseId = async (codigoTurma: number) => {
+  const idTurma = await getCourseIdByCode(codigoTurma);
   return await getDetalhesMateriaisPorIds(
     await getMaterialIdsPorTurma(idTurma)
   );
