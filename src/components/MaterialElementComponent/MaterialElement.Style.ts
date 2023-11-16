@@ -3,6 +3,7 @@ import colors from "../../Themes/colors";
 
 const MaterialContainer = styled.div`
   width: 100%;
+  max-width: 450px;
   cursor: pointer;
   margin-bottom: 1rem;
   background-color: ${colors.dark_gray_20};
@@ -65,14 +66,14 @@ const Title = styled.p`
 const Subtitle = styled.p`
   font-size: 0.8rem;
   text-align: left;
-  color: ${colors.gray_8b};
+  color: ${colors.soft_gray_80};
   margin: 0;
   padding-right: 1rem;
 `;
 
 const CreatedAt = styled.p`
   font-size: 0.8rem;
-  color: ${colors.gray_8b};
+  color: ${colors.soft_gray_80};
 `;
 
 export {

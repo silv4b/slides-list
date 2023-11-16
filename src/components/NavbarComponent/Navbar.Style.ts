@@ -12,7 +12,7 @@ const LeftButtons = styled.div`
     border-radius: 4px;
     border-width: 0.02rem;
     transition: 0.2s ease-in-out;
-    color: ${colors.gray_8b};
+    color: ${colors.soft_gray_80};
 
     &:hover {
       color: ${colors.white};

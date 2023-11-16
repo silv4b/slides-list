@@ -6,8 +6,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Pages
 import ManageMaterial from "./pages/ManageMaterialPage/ManageMaterial.tsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
-import ClassesPage from "./pages/ClassPage/ClassPage.tsx";
+import CoursesPage from "./pages/CoursesPage/CoursesPage.tsx";
 import Main from "./pages/MainPage/Main.tsx";
+import CoursePage from "./pages/CoursePage/CoursePage.tsx";
 
 const router = createBrowserRouter([
   // Inicial Page (temp)
@@ -29,10 +30,15 @@ const router = createBrowserRouter([
     element: <ManageMaterial />,
     errorElement: <ErrorPage />,
   },
-  // Manage Classes
+  // Manage Courses
   {
-    path: "/classes",
-    element: <ClassesPage />,
+    path: "/courses",
+    element: <CoursesPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/courses/:courseCod", // Use :courseCod para capturar o identificador da URL
+    element: <CoursePage />,
     errorElement: <ErrorPage />,
   },
 ]);

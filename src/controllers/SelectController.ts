@@ -1,4 +1,5 @@
 import supabase from "../../lib/supabase-client";
+/* Mudar o nome das funções para ficar mais genérico. */
 
 // seleciona um material pelo id
 const selectMaterial = async (tableName: string, idToGetData: number) => {
@@ -52,4 +53,70 @@ const selectMaterialByText = async (
   }
 };
 
-export { selectMaterial, selectMaterials, selectMaterialByText };
+const getCourseIdByCode = async (codigoTurma: number) => {
+  try {
+    const { data } = await supabase
+      .from("turmas")
+      .select("id")
+      .eq("codigo", codigoTurma);
+    const courseId = data?.[0]?.id as number;
+    if (typeof courseId === "number") {
+      return courseId;
+    } else {
+      // Pode retornar um valor padrão, lançar um erro ou fazer qualquer outra coisa
+      throw new Error("Curso não encontrado");
+    }
+  } catch (error) {
+    throw new Error(`${error}`);
+  }
+};
+
+/* Rever a necessidade desse recuperar
+e verificar ser da pra diminuir a quantidade. */
+// Função para obter IDs de materiais associados a uma turma
+const getMaterialIdsPorTurma = async (idTurma: number) => {
+  try {
+    const { data } = await supabase
+      .from("material_turma")
+      .select("id_material")
+      .eq("id_turma", idTurma);
+    if (data === null) {
+      throw new Error("Resposta nula ao buscar IDs de materiais");
+    } else {
+      const ids = data.map((item) => item.id_material as number);
+      return ids;
+    }
+  } catch (error) {
+    throw new Error(`Erro na consulta: ${error}`);
+  }
+};
+
+const getDetalhesMateriaisPorIds = async (idsMateriais: number[]) => {
+  try {
+    const { data } = await supabase
+      .from("material")
+      .select("*")
+      .in("id", idsMateriais); // verifica se no select os 'id' está no array de ids 'idsMateriais'
+    if (data === null) {
+      throw new Error("Resposta nula ao buscar IDs de materiais");
+    } else {
+      return data;
+    }
+  } catch (error) {
+    throw new Error(`Erro na consulta: ${error}`);
+  }
+};
+
+const selectMaterialByCourseId = async (codigoTurma: number) => {
+  const idTurma = await getCourseIdByCode(codigoTurma);
+  return await getDetalhesMateriaisPorIds(
+    await getMaterialIdsPorTurma(idTurma)
+  );
+};
+
+export {
+  selectMaterial,
+  selectMaterials,
+  selectMaterialByText,
+  selectMaterialByCourseId,
+};

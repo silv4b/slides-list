@@ -4,7 +4,7 @@ export type MaterialType = {
   url: string;
 };
 
-export type ClassType = {
+export type CourseType = {
   id: number;
   nome: string;
   codigo: number;

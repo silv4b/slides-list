@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import ClassElement from "../../components/ClassElementComponent/ClassElement";
+import CourseElement from "../../components/CourseElementComponent/CourseElement";
 import Navbar from "../../components/NavbarComponent/Navbar";
-import { Container, Title, MyContainer } from "./ClassPage.Style";
-import { ClassType } from "../../../types/my_types";
+import { Container, Title, MyContainer } from "./CoursesPage.Style";
+import { CourseType } from "../../../types/my_types";
 import { selectMaterials } from "../../controllers/SelectController";
 import { ShowNotification } from "../../Utils/ShowNotificationUtil";
 
-export default function ClassesPage() {
-  const [classes, setClasses] = useState<ClassType[]>([]);
+export default function CoursesPage() {
+  const [classes, setClasses] = useState<CourseType[]>([]);
   const fetcher = useCallback(async () => {
     selectMaterials("turmas", "id")
       .then((result) => {
@@ -33,8 +33,9 @@ export default function ClassesPage() {
         <Title>Classes Page</Title>
         <MyContainer>
           {classes.map((turma) => (
-            <ClassElement
+            <CourseElement
               key={turma.id}
+              id={turma.id}
               codigo={turma.codigo}
               nome={turma.nome}
               gsa_url={turma.gsa_url}

@@ -6,11 +6,11 @@ export default function Navbar() {
     <Container>
       <LeftButtons>
         <Link to="/materials">Materiais</Link>
-        <Link to="/classes">Turmas</Link>
+        <Link to="/courses">Turmas</Link>
         <Link to="/management">Gerenciar</Link>
       </LeftButtons>
       <RightButtons>
-        <img src="src\assets\favicon.png" alt="icon" />
+        <img src="../../../src/assets/favicon.png" alt="icon" />
       </RightButtons>
     </Container>
   );
