@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 
 // Pages
-import ManageMaterial from "./pages/ManageMaterialPage/ManageMaterial.tsx";
-import ErrorPage from "./pages/ErrorPage/ErrorPage.tsx";
-import CoursesPage from "./pages/CoursesPage/CoursesPage.tsx";
-import Main from "./pages/MainPage/Main.tsx";
-import CoursePage from "./pages/CoursePage/CoursePage.tsx";
+import ManageMaterial from "./pages/ManageMaterial/ManageMaterial.tsx";
+import ErrorPage from "./pages/Error/Error.tsx";
+import CoursesPage from "./pages/Courses/Courses.tsx";
+import Main from "./pages/Main/Main.tsx";
+import CoursePage from "./pages/Course/Course.tsx";
 
 const router = createBrowserRouter([
   // Inicial Page (temp)

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { ReactNotifications } from "react-notifications-component";
 import { ShowNotification } from "../../utils/ShowNotificationUtil";
-import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
+import MaterialElement from "../../components/MaterialElement/MaterialElement";
 // import Navbar from "../../components/NavbarComponent/Navbar";
 import { FiSearch } from "react-icons/fi";
 import {

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import CourseElement from "../../components/CourseElementComponent/CourseElement";
-import Navbar from "../../components/NavbarComponent/Navbar";
-import { Container, Title, MyContainer } from "./CoursesPage.Style";
+import CourseElement from "../../components/CourseElement/CourseElement";
+import Navbar from "../../components/Navbar/Navbar";
+import { Container, Title, MyContainer } from "../Courses/Courses.Style";
 import { CourseType } from "../../../types/types";
 import { selectMaterials } from "../../controllers/SelectController";
 import { ShowNotification } from "../../utils/ShowNotificationUtil";

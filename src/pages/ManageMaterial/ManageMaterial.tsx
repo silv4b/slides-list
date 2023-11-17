@@ -2,8 +2,8 @@ import { useState } from "react";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css"; // alterar o componente para remover esse tema
 import { ShowNotification } from "../../utils/ShowNotificationUtil";
-import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
-import Navbar from "../../components/NavbarComponent/Navbar";
+import Dialog from "../../components/ConfirmationDialog/ConfirmationDialog";
+import Navbar from "../../components/Navbar/Navbar";
 import {
   Container,
   ContainerRow,
