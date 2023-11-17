@@ -4,7 +4,7 @@ import { selectMaterialByCourseId } from "../../controllers/SelectController";
 import { Container, Title } from "./CoursePage.Style";
 import { useParams } from "react-router-dom";
 import { PostType } from "../../../types/collections";
-import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
 import MaterialElement from "../../components/MaterialElementComponent/MaterialElement";
 
 export default function CoursePage() {
@@ -35,10 +35,7 @@ export default function CoursePage() {
       <Navbar />
       <Container>
         <Title> Course Page</Title>
-        <h3>
-          {/* {courseData.codigo} - {courseData.nome} */}
-          {courseCodNumber}
-        </h3>
+        <h3>{courseCodNumber}</h3>
         {materials.map((material) => (
           <MaterialElement
             key={material.id}

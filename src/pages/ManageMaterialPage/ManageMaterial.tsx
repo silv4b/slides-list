@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ReactNotifications } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css"; // alterar o componente para remover esse tema
-import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
 import Dialog from "../../components/ConfirmationDialogComponent/ConfirmationDialog";
 import Navbar from "../../components/NavbarComponent/Navbar";
 import {
@@ -13,7 +13,7 @@ import {
   MyButton,
   ButtonContainer,
 } from "./ManageMaterial.Style";
-import { MaterialType } from "../../../types/my_types";
+import { MaterialType } from "../../../types/types";
 import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
 import { insertMaterial } from "../../controllers/InsertController";

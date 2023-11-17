@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import colors from "../../Themes/colors";
-
-// mais seguro usar o partial para passagem de parâmetros opcionais
-interface MyButtonProps {
-  backgroundColor: string;
-  hoverColor: string;
-}
+import colors from "../../themes/colors";
+import { MyButtonProps } from "../../../types/interfaces";
 
 const Container = styled.div`
   display: flex;

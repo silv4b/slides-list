@@ -1,9 +1,5 @@
 import { Container, Title, Content } from "./Notification.Style";
-
-interface INotificationData {
-  title: string;
-  message: string;
-}
+import { INotificationData } from "../../../types/interfaces";
 
 export default function NotificationComponent({
   title,

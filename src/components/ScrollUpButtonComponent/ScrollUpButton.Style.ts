@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import colors from "../../Themes/colors";
+import colors from "../../themes/colors";
 
 const MyScrollUpButton = styled.button`
   display: flex;

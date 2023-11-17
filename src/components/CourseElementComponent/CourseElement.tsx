@@ -7,20 +7,12 @@ import {
   Title,
   CourseCode,
 } from "./CourseElement.Style";
-import { ShowNotification } from "../../Utils/ShowNotificationUtil";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
 import { ReactNotifications } from "react-notifications-component";
 import { useNavigate } from "react-router-dom";
-interface ICourseType {
-  id: number;
-  nome: string;
-  codigo: number;
-  diario_url: string;
-  gsa_url: string;
-  created_at: string;
-}
+import { ICourseType } from "../../../types/interfaces";
 
 export default function CourseElement({
-  id,
   codigo,
   nome,
   gsa_url,
@@ -48,9 +40,7 @@ export default function CourseElement({
     <>
       <ReactNotifications />
       <Container>
-        <CourseCode>
-          {id} - {codigo}
-        </CourseCode>
+        <CourseCode>{codigo}</CourseCode>
         <Title>{nome}</Title>
         <ButtonContainer>
           <MyButton onClick={() => handleNewTab(gsa_url!)}>

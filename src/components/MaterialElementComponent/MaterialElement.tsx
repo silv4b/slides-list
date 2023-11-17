@@ -7,14 +7,7 @@ import {
   CreatedAt,
   MaterialContent,
 } from "./MaterialElement.Style";
-
-interface IMaterialElement {
-  id: number;
-  title: string;
-  subtitle: string;
-  url: string;
-  created_at: string;
-}
+import { IMaterialElement } from "../../../types/interfaces";
 
 export default function MaterialElement({
   id,

@@ -1,5 +1,5 @@
 import supabase from "../../lib/supabase-client";
-import { MaterialType } from "../../types/my_types";
+import { MaterialType } from "../../types/types";
 
 export const updateMaterial = async (
   tableName: string,

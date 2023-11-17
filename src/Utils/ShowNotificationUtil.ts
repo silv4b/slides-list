@@ -1,11 +1,6 @@
 import { Store } from "react-notifications-component";
 import NotificationComponent from "../components/NotificationComponent/Notification";
-
-interface INotification {
-  title: string;
-  content: string;
-  time: number;
-}
+import { INotification } from "../../types/interfaces";
 
 export const ShowNotification = ({ title, content, time }: INotification) => {
   Store.addNotification({

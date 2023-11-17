@@ -2,6 +2,8 @@ import { Container, LeftButtons, RightButtons } from "./Navbar.Style";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  // Adicionar renderização das opções para cada role
+  // Ex.: /management deve ser visível apenas por user admin (eu)
   return (
     <Container>
       <LeftButtons>

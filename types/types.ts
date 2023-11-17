@@ -1,3 +1,5 @@
+// Tipos usados no projeto
+
 export type MaterialType = {
   title: string;
   subtitle: string;
@@ -12,5 +14,3 @@ export type CourseType = {
   gsa_url?: string;
   created_at: string;
 };
-
-// TODO: Ver a abordagem recomendada para fazer esses tipos

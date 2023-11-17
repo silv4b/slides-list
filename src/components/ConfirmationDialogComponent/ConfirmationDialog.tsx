@@ -5,15 +5,7 @@ import {
   MyButton,
   MyButtonLink,
 } from "./ConfirmationDialog.Style";
-
-interface IConfirmationDialog {
-  isVisible: boolean;
-  message: string;
-  confirmText: string;
-  cancelText: string;
-  onConfirm: () => void;
-  onCancel: () => void;
-}
+import { IConfirmationDialog } from "../../../types/interfaces";
 
 export default function Dialog({
   isVisible,

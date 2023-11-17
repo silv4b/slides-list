@@ -6,7 +6,6 @@ export default function ErrorPage() {
     <Container>
       <Title>
         Erro
-        {/* <Link to="/">.</Link> */}
       </Title>
       <Subtitle>
         O caminho não existe ou não está disponível. Volte{" "}

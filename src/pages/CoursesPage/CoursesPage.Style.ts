@@ -20,18 +20,3 @@ const MyContainer = styled.div`
 `;
 
 export { Container, Title, MyContainer };
-
-// const Container = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// `;
-
-// const MyContainer = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: left;
-//   align-items: flex-start;
-// `;
-
-// export { Container, MyContainer };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import colors from "../../Themes/colors";
+import colors from "../../themes/colors";
 
 const Overlay = styled.div`
   transition: 0.9s ease-in-out;
