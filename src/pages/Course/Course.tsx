@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import { PostType } from "../../../types/collections";
+import MaterialElement from "../../components/MaterialElement/MaterialElement";
 import Navbar from "../../components/Navbar/Navbar";
 import { selectMaterialByCourseId } from "../../controllers/SelectController";
-import { Container, Title } from "./Course.Style";
-import { useParams } from "react-router-dom";
-import { PostType } from "../../../types/collections";
 import { ShowNotification } from "../../utils/ShowNotificationUtil";
-import MaterialElement from "../../components/MaterialElement/MaterialElement";
+import { Container, Title } from "./Course.Style";
 
 export default function CoursePage() {
   const [materials, setMaterials] = useState<PostType[]>([]);

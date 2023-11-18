@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
+
+import { CourseType } from "../../../types/types";
 import CourseElement from "../../components/CourseElement/CourseElement";
 import Navbar from "../../components/Navbar/Navbar";
-import { Container, Title, MyContainer } from "../Courses/Courses.Style";
-import { CourseType } from "../../../types/types";
 import { selectMaterials } from "../../controllers/SelectController";
 import { ShowNotification } from "../../utils/ShowNotificationUtil";
+import { Container, MyContainer, Title } from "../Courses/Courses.Style";
 
 export default function CoursesPage() {
   const [classes, setClasses] = useState<CourseType[]>([]);

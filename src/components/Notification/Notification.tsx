@@ -1,5 +1,5 @@
-import { Container, Title, Content } from "./Notification.Style";
 import { INotificationData } from "../../../types/interfaces";
+import { Container, Content, Title } from "./Notification.Style";
 
 export default function NotificationComponent({
   title,

@@ -1,23 +1,17 @@
 import { useState } from "react";
 import { ReactNotifications } from "react-notifications-component";
-import "react-notifications-component/dist/theme.css"; // alterar o componente para remover esse tema
-import { ShowNotification } from "../../utils/ShowNotificationUtil";
+
+import { MaterialType } from "../../../types/types";
 import Dialog from "../../components/ConfirmationDialog/ConfirmationDialog";
 import Navbar from "../../components/Navbar/Navbar";
-import {
-  Container,
-  ContainerRow,
-  Title,
-  Subtitle,
-  InputData,
-  MyButton,
-  ButtonContainer,
-} from "./ManageMaterial.Style";
-import { MaterialType } from "../../../types/types";
-import { selectMaterial } from "../../controllers/SelectController";
 import { deleteMaterial } from "../../controllers/DeleteController";
 import { insertMaterial } from "../../controllers/InsertController";
+import { selectMaterial } from "../../controllers/SelectController";
 import { updateMaterial } from "../../controllers/UpdateController";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
+import { ButtonContainer, Container, ContainerRow, InputData, MyButton, Subtitle, Title } from "./ManageMaterial.Style";
+
+import "react-notifications-component/dist/theme.css";
 
 export default function ManageMaterial() {
   const [formMaterial, setFormMaterial] = useState<MaterialType>({

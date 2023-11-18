@@ -1,4 +1,5 @@
 import supabase from "../../lib/supabase-client";
+
 /* Mudar o nome das funções para ficar mais genérico. */
 
 // seleciona um material pelo id

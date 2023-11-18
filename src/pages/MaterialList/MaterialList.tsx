@@ -1,20 +1,12 @@
-import { useState, useCallback, useEffect } from "react";
-import { ReactNotifications } from "react-notifications-component";
-import { ShowNotification } from "../../utils/ShowNotificationUtil";
-import MaterialElement from "../../components/MaterialElement/MaterialElement";
-// import Navbar from "../../components/NavbarComponent/Navbar";
+import { useCallback, useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import {
-  InputData,
-  RowContainer,
-  Container,
-  MyButton,
-} from "./MaterialList.Style";
+import { ReactNotifications } from "react-notifications-component";
+
 import { PostType } from "../../../types/collections";
-import {
-  selectMaterials,
-  selectMaterialByText,
-} from "../../controllers/SelectController";
+import MaterialElement from "../../components/MaterialElement/MaterialElement";
+import { selectMaterialByText, selectMaterials } from "../../controllers/SelectController";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
+import { Container, InputData, MyButton, RowContainer } from "./MaterialList.Style";
 
 export default function MaterialList() {
   const [textSearch, setTextSearch] = useState("");
@@ -70,7 +62,6 @@ export default function MaterialList() {
 
   return (
     <>
-      {/* <Navbar /> */}
       <ReactNotifications />
       <Container>
         <RowContainer>
