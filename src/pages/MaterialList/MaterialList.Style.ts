@@ -7,6 +7,7 @@ const Container = styled.div`
   max-width: 28rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const RowContainer = styled.div`
@@ -17,7 +18,7 @@ const RowContainer = styled.div`
   margin-bottom: 1rem;
 
   @media screen and (max-width: 490px) {
-    width: auto;
+    max-width: 300px;
     margin: 0.4rem 0.6rem 0.4rem 0.6rem;
   }
 `;

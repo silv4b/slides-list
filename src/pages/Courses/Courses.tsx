@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { CourseType } from "../../../types/types";
 import CourseElement from "../../components/CourseElement/CourseElement";
 import Navbar from "../../components/Navbar/Navbar";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import { selectMaterials } from "../../controllers/SelectController";
 import { ShowNotification } from "../../utils/ShowNotificationUtil";
 import { Container, MyContainer, Title } from "./Courses.Style";
@@ -30,6 +31,7 @@ export default function CoursesPage() {
   return (
     <>
       <Navbar />
+      <ScrollUpButton />
       <Container>
         <Title>Classes Page</Title>
         <MyContainer>

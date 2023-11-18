@@ -20,8 +20,8 @@ const MaterialContainer = styled.div`
   }
 
   @media screen and (max-width: 490px) {
-    width: auto;
-    margin: 0.4rem 0.6rem 0.4rem 0.6rem;
+    max-width: 300px;
+    margin: 0.4rem 0.6rem 0.4rem 0.6rem !important;
   }
 `;
 
