@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link to="/management">Gerenciar</Link>
       </LeftButtons>
       <RightButtons>
-        <img src="../../../src/assets/favicon.png" alt="icon" />
+        <img src="https://raw.githubusercontent.com/silv4b/slides-list/main/src/assets/favicon.png" alt="icon" />
       </RightButtons>
     </Container>
   );
