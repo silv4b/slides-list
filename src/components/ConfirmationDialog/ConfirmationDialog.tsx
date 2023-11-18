@@ -1,11 +1,5 @@
-import {
-  Overlay,
-  DialogContent,
-  ButtonContainer,
-  MyButton,
-  MyButtonLink,
-} from "./ConfirmationDialog.Style";
 import { IConfirmationDialog } from "../../../types/interfaces";
+import { ButtonContainer, DialogContent, MyButton, MyButtonLink, Overlay } from "./ConfirmationDialog.Style";
 
 export default function Dialog({
   isVisible,

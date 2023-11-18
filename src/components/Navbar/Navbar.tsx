@@ -1,5 +1,6 @@
-import { Container, LeftButtons, RightButtons } from "./Navbar.Style";
 import { Link } from "react-router-dom";
+
+import { Container, LeftButtons, RightButtons } from "./Navbar.Style";
 
 export default function Navbar() {
   // Adicionar renderização das opções para cada role

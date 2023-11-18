@@ -1,16 +1,11 @@
-import { SiGoogleclassroom, SiSanic } from "react-icons/si";
 import { BsArrowRightCircle } from "react-icons/bs";
-import {
-  Container,
-  ButtonContainer,
-  MyButton,
-  Title,
-  CourseCode,
-} from "./CourseElement.Style";
-import { ShowNotification } from "../../utils/ShowNotificationUtil";
+import { SiGoogleclassroom, SiSanic } from "react-icons/si";
 import { ReactNotifications } from "react-notifications-component";
 import { useNavigate } from "react-router-dom";
+
 import { ICourseType } from "../../../types/interfaces";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
+import { ButtonContainer, Container, CourseCode, MyButton, Title } from "./CourseElement.Style";
 
 export default function CourseElement({
   codigo,

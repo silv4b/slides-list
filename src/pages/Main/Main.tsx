@@ -1,7 +1,7 @@
-import MaterialList from "../MaterialList/MaterialList";
-import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
 import Navbar from "../../components/Navbar/Navbar";
-import { Container, Title, Subtitle, MyLink } from "./Main.Style";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import MaterialList from "../MaterialList/MaterialList";
+import { Container, MyLink, Subtitle, Title } from "./Main.Style";
 
 export default function Main() {
   return (

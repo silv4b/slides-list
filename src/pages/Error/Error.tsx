@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Container, Title, Subtitle } from "./Error.Style";
+
+import { Container, Subtitle, Title } from "./Error.Style";
 
 export default function ErrorPage() {
   return (

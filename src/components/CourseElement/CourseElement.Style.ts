@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import colors from "../../themes/colors";
+
 import { MyButtonProps } from "../../../types/interfaces";
+import colors from "../../themes/colors";
 
 const Container = styled.div`
   display: flex;

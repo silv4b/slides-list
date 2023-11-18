@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import { selectMaterialByCourseId } from "../../controllers/SelectController";
-import { Container, Title } from "./Course.Style";
 import { useParams } from "react-router-dom";
+
 import { PostType } from "../../../types/collections";
-import { ShowNotification } from "../../utils/ShowNotificationUtil";
 import MaterialElement from "../../components/MaterialElement/MaterialElement";
+import Navbar from "../../components/Navbar/Navbar";
+import ScrollUpButton from "../../components/ScrollUpButton/ScrollUpButton";
+import { selectMaterialByCourseId } from "../../controllers/SelectController";
+import { ShowNotification } from "../../utils/ShowNotificationUtil";
+import { Container, Subtitle, Title } from "./Course.Style";
 
 export default function CoursePage() {
   const [materials, setMaterials] = useState<PostType[]>([]);
@@ -33,9 +35,10 @@ export default function CoursePage() {
   return (
     <>
       <Navbar />
+      <ScrollUpButton />
       <Container>
         <Title> Course Page</Title>
-        <h3>{courseCodNumber}</h3>
+        <Subtitle>{courseCodNumber}</Subtitle>
         {materials.map((material) => (
           <MaterialElement
             key={material.id}

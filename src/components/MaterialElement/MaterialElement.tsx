@@ -1,13 +1,7 @@
 import { format, zonedTimeToUtc } from "date-fns-tz";
-import {
-  MaterialContainer,
-  Material,
-  Title,
-  Subtitle,
-  CreatedAt,
-  MaterialContent,
-} from "./MaterialElement.Style";
+
 import { IMaterialElement } from "../../../types/interfaces";
+import { CreatedAt, Material, MaterialContainer, MaterialContent, Subtitle, Title } from "./MaterialElement.Style";
 
 export default function MaterialElement({
   id,
