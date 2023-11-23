@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ReactNotifications } from "react-notifications-component";
 
 import { MaterialType } from "../../../types/types";
+import CheckboxList from "../../components/CheckBoxClasses/CheckBoxClasses";
 import Dialog from "../../components/ConfirmationDialog/ConfirmationDialog";
 import Navbar from "../../components/Navbar/Navbar";
 import { deleteMaterial } from "../../controllers/DeleteController";
@@ -221,6 +222,18 @@ export default function ManageMaterial() {
       handleClearForm();
     }
   };
+
+  const items = [
+    { id: 1, text: "116555" },
+    { id: 2, text: "114352" },
+    { id: 3, text: "116556" },
+  ];
+
+  const handleCheckedItemsChange = (checkedItems: number[]) => {
+    console.log("Elementos marcados no componente pai:", checkedItems);
+    // Você pode fazer outras coisas com a lista de elementos marcados aqui
+  };
+
   return (
     <>
       <Navbar />
@@ -274,6 +287,15 @@ export default function ManageMaterial() {
             <MyButton onClick={handleEditData}>Buscar</MyButton>
             <MyButton onClick={handleRemoveData}>Remover</MyButton>
           </ButtonContainer>
+        </Container>
+
+        <Container>
+          <Title>Vínculos</Title>
+          <Subtitle>Turmas vinculadas ao material</Subtitle>
+          <CheckboxList
+            items={items}
+            onCheckedItemsChange={handleCheckedItemsChange}
+          />
         </Container>
       </ContainerRow>
       {isConfirmationVisible && (

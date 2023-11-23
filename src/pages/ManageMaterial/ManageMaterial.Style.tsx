@@ -10,7 +10,7 @@ const ContainerRow = styled.div`
   justify-content: center;
   transition: 0.2s ease-in-out;
 
-  @media screen and (max-width: 630px) {
+  @media screen and (max-width: 900px) {
     gap: 0;
     flex-direction: column-reverse;
   }
@@ -22,6 +22,7 @@ const Container = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   align-items: center;
+  /* background-color: red; */
 `;
 
 const Title = styled.h2`
