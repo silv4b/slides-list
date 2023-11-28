@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { InputData } from "../../pages/MaterialList/MaterialList.Style";
+import { Container, InputData } from "./CheckBoxClasses.Style";
 
 /*
   Esse componente receberá uma lista com todas as turmas para os quais
@@ -50,25 +50,24 @@ export default function CheckboxList({
   );
 
   return (
-    <div>
+    <Container>
       <InputData
         type="text"
-        placeholder="Search..."
+        placeholder="Busque turmas"
         value={searchTerm}
         onChange={handleSearchChange}
       />
+
       {filteredItems.map((item) => (
-        <div key={item.id}>
-          <label>
-            <input
-              type="checkbox"
-              checked={checkedItems.includes(item.id)}
-              onChange={() => handleCheckboxChange(item.id)}
-            />
-            {item.text}
-          </label>
-        </div>
+        <label key={item.id}>
+          <input
+            type="checkbox"
+            checked={checkedItems.includes(item.id)}
+            onChange={() => handleCheckboxChange(item.id)}
+          />
+          {item.text}
+        </label>
       ))}
-    </div>
+    </Container>
   );
 }
