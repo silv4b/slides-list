@@ -12,11 +12,11 @@ const Title = styled.h2`
 `;
 
 const MyContainer = styled.div`
-  display: flex;
-  max-width: 1600px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  display: grid;
+  max-width: 1200px;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.6rem;
 `;
 
 export { Container, Title, MyContainer };

@@ -6,13 +6,9 @@ import colors from "../../themes/colors";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-width: 290px;
-  max-width: 360px !important;
   margin: 0.6rem;
   background-color: ${colors.dark_gray_20};
   padding: 0.8rem;
-  max-width: 40rem;
   border-radius: 4px;
   border: solid;
   border-color: ${colors.border_color};
@@ -26,9 +22,11 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 630px) {
-    min-width: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    /* vai ser removido */
+  }
+
+  @media screen and (max-width: 420px) {
+    /* vai ser removido */
   }
 `;
 
